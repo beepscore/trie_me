@@ -47,3 +47,24 @@ class Trie:
         # loop got all the way to the last digit in number
         return current_node
 
+    def add_item(self, item: int) -> Node:
+        """
+        :param item: item to add to trie. A decimal int, typically with 9 digits.
+        :return: terminal node at position described by item. 
+        If trie contains item, this method overwrites it.
+        """
+        string = str(item)
+
+        current_node = self.root_node
+
+        for character in string:
+            index = int(character)
+            if current_node.children[index] is None:
+                # nothing at this position yet, add a new node
+                current_node.children[index] = Node(character)
+
+            # traverse to next level down
+            current_node = current_node.children[index]
+
+        # loop got all the way to the last digit in number
+        return current_node

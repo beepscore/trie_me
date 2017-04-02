@@ -38,12 +38,20 @@ class TestTrie(unittest.TestCase):
         numbers_trie = trie.Trie(root_node)
         child = node.Node("6")
         root_node.add_child(child)
-        self.assertTrue(numbers_trie.contains(6), child)
+        self.assertTrue(numbers_trie.contains(6))
 
     def test_contains_node_not_in_trie(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
         child = node.Node("6")
         root_node.add_child(child)
-        self.assertFalse(numbers_trie.contains(2), child)
+        self.assertFalse(numbers_trie.contains(2))
+
+    def test_add_item(self):
+        root_node = node.Node("")
+        numbers_trie = trie.Trie(root_node)
+        item = 123456789
+        self.assertFalse(numbers_trie.contains(item))
+        numbers_trie.add_item(item)
+        self.assertTrue(numbers_trie.contains(item))
 
