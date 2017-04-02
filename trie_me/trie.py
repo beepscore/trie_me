@@ -68,3 +68,12 @@ class Trie:
 
         # loop got all the way to the last digit in number
         return current_node
+
+    def add_items(self, filename: str):
+        with open(filename, 'r', encoding='utf-8') as items:
+
+            for line in items:
+                item_string = line.strip('\n')
+                item = int(item_string)
+                self.add_item(item)
+
