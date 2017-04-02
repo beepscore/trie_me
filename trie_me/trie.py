@@ -22,4 +22,18 @@ class Trie:
         :return: node at position described by number. 
         If node doesn't exist, return None
         """
-        return self.root_node
+        string = str(number)
+
+        current_node = self.root_node
+
+        for character in string:
+            index = int(character)
+            if current_node.children[index] == None:
+                # didn't find a match
+                return None
+            else:
+                current_node = current_node.children[index]
+
+        # loop got all the way to the last digit in number
+        return current_node
+
