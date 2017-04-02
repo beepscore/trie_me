@@ -12,9 +12,6 @@ https://github.com/html5lib/html5lib-python
 
 ## TODO:
 
-### add number to trie
-Add a method to add the nodes corresponding to a number. Typically 9 nodes.
-
 ### Populate trie
 Read file numbers_test.txt line by line.  
 For each line see if trie contains number.  
