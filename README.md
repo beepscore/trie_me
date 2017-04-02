@@ -2,13 +2,42 @@
 Python implement trie data structure as practice.  
 
 # References
+## Trie Wikipedia
+https://en.wikipedia.org/wiki/Trie
+
 ## Python html5lib/trie
 https://github.com/html5lib/html5lib-python
 
 # Results
 
-# Trie Wikipedia
-https://en.wikipedia.org/wiki/Trie
+## TODO:
+
+### Read from trie
+Write a method like trie.contains(number) that returns bool.  
+
+### Populate trie
+Read file numbers_test.txt line by line.  
+For each line see if trie contains number.  
+If trie doesn't contain number, insert number into trie.  
+
+### Read from trie
+Write a method to return list of numbers between a and b.
+This may require depth first search, each node has a property visited of type bool.
+
+#### Traverse tree
+e.g. Visit "leftmost" nodes (e.g. child["0"]) as deep as possible, back up and mark child visited.
+Then visit next child.
+
+### Implement delete a number
+Delete last node and any parents without children.
+
+### Node
+Use a dictionary or set for children?
+#### Optimize?
+Using an array for children may waste a lot of memory space.
+Maybe this doesn't matter. Maybe Python is smart enough to be sparse.
+
+---
 
 # data/input/numbers_test.txt
 Contains an unsorted list of 9 digit numbers.
