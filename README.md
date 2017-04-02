@@ -1,6 +1,10 @@
 # Purpose
 Python implement trie data structure as practice.  
 
+# References
+## Python html5lib/trie
+https://github.com/html5lib/html5lib-python
+
 # Results
 
 ## how to run program
