@@ -64,7 +64,7 @@ cd to project directory. Run tests via python command or bash script.
 ### python command
 This command lists and tests all modules
 
-python3 -m unittest tests.test_trie
+python3 -m unittest tests.test_trie tests.test_node
 
 
 # Appendix Install virtual environment and requirements
