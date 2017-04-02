@@ -31,12 +31,6 @@ Then visit next child.
 ### Implement delete a number
 Delete last node and any parents without children.
 
-### Node
-Use a dictionary or set for children?
-#### Optimize?
-Using an array for children may waste a lot of memory space.
-Maybe this doesn't matter. Maybe Python is smart enough to be sparse.
-
 ---
 
 # data/input/numbers_test.txt
