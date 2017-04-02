@@ -3,11 +3,7 @@
 
 class Trie:
     """
-    Controller composed of several objects.
-    Reads input commands.
-    Requests a list of web pages and writes each one to a file.
-    Path includes directory name and file name.
-    Creates directory if it doesn't exist.
+    Trie holds a trie data structure
     """
 
     def __init__(self, root_node):
