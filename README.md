@@ -7,6 +7,9 @@ https://github.com/html5lib/html5lib-python
 
 # Results
 
+# Trie Wikipedia
+https://en.wikipedia.org/wiki/Trie
+
 # data/input/numbers_test.txt
 Contains an unsorted list of 9 digit numbers.
 For example these could represent social security numbers.
