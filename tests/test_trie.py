@@ -47,7 +47,6 @@ class TestTrie(unittest.TestCase):
         root_node.add_child(child)
         self.assertFalse(numbers_trie.contains(2))
 
-    def test_add_item(self):
     def test_add_item_contains_true(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
