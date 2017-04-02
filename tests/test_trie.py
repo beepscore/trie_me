@@ -14,8 +14,12 @@ class TestTrie(unittest.TestCase):
         self.assertIsNotNone(numbers_trie)
 
     def test_root_node(self):
-        root_node = node.Node("3")
+        root_node = node.Node("")
         self.assertIsNotNone(root_node)
         numbers_trie = trie.Trie(root_node)
         self.assertEqual(numbers_trie.root_node, root_node)
 
+    def test_get_node(self):
+        root_node = node.Node("")
+        numbers_trie = trie.Trie(root_node)
+        self.assertEqual(numbers_trie.get_node(None), root_node)
