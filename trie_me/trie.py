@@ -16,6 +16,16 @@ class Trie:
         """
         self.root_node = root_node
 
+    def contains(self, number: int) -> bool:
+        """
+        :param number: number to find. Typically 9 decimal digits.
+        :return: True if trie contains number. False otherwise.
+        """
+        if self.get_node(number) is not None:
+            return True
+        else:
+            return False
+
     def get_node(self, number: int) -> Node:
         """
         :param number: number to find. Typically 9 decimal digits.

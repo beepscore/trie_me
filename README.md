@@ -12,9 +12,6 @@ https://github.com/html5lib/html5lib-python
 
 ## TODO:
 
-### Read from trie
-Write a method like trie.contains(number) that returns bool.  
-
 ### Populate trie
 Read file numbers_test.txt line by line.  
 For each line see if trie contains number.  
