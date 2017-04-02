@@ -12,11 +12,6 @@ https://github.com/html5lib/html5lib-python
 
 ## TODO:
 
-### Populate trie
-Read file numbers_test.txt line by line.  
-For each line see if trie contains number.  
-If trie doesn't contain number, insert number into trie.  
-
 ### Read from trie
 Write a method to return list of numbers between a and b.
 This may require depth first search, each node has a property visited of type bool.
