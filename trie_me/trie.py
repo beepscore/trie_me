@@ -38,7 +38,7 @@ class Trie:
 
         for character in string:
             index = int(character)
-            if current_node.children[index] == None:
+            if current_node.children[index] is None:
                 # didn't find a match
                 return None
             else:
