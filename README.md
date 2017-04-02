@@ -58,6 +58,10 @@ cd project root directory
 activate virtual environment
 #### macOS
 source venv/bin/activate
+##### anaconda
+source activate trie_me
+(trie_me) should show at beginning of command prompt  
+
 #### Windows
 venv\Scripts\activate
 
