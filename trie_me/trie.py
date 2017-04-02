@@ -11,32 +11,30 @@ class Trie:
         """
         Initializes the class.
 
-        :param root_node: root node of trie. Does not have a number value.
+        :param root_node: root node of trie. value is empty string "".
         :return: None
         """
         self.root_node = root_node
 
-    def contains(self, number: int) -> bool:
+    def contains(self, item: str) -> bool:
         """
-        :param number: number to find. Typically 9 decimal digits.
+        :param item: item to find. A string of decimal digits, typically length 9.
         :return: True if trie contains number. False otherwise.
         """
-        if self.get_node(number) is not None:
+        if self.get_node(item) is not None:
             return True
         else:
             return False
 
-    def get_node(self, number: int) -> Node:
+    def get_node(self, item: str) -> Node:
         """
-        :param number: number to find. Typically 9 decimal digits.
-        :return: node at position described by number. 
+        :param item: item to find. A string of decimal digits, typically length 9.
+        :return: node at position described by item. 
         If node doesn't exist, return None
         """
-        string = str(number)
-
         current_node = self.root_node
 
-        for character in string:
+        for character in item:
             index = int(character)
             if current_node.children[index] is None:
                 # didn't find a match
@@ -47,17 +45,15 @@ class Trie:
         # loop got all the way to the last digit in number
         return current_node
 
-    def add_item(self, item: int) -> Node:
+    def add_item(self, item: str) -> Node:
         """
-        :param item: item to add to trie. A decimal int, typically with 9 digits.
+        :param item: item to add to trie. A string of decimal digits, typically length 9.
         :return: terminal node at position described by item. 
         If trie contains item, this method overwrites it.
         """
-        string = str(item)
-
         current_node = self.root_node
 
-        for character in string:
+        for character in item:
             index = int(character)
             if current_node.children[index] is None:
                 # nothing at this position yet, add a new node
@@ -73,7 +69,6 @@ class Trie:
         with open(filename, 'r', encoding='utf-8') as items:
 
             for line in items:
-                item_string = line.strip('\n')
-                item = int(item_string)
+                item = line.strip('\n')
                 self.add_item(item)
 
