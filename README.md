@@ -20,7 +20,7 @@ Numbers don't contain separators like "-" or ".".
 e.g.  
 cd pythonProjects/trie_me
 
-### acitvate virtual environment  
+### create and activate virtual environment (see appendix)
 
 ### call main
 python3 -m main  
@@ -40,16 +40,25 @@ python3 -m unittest tests.test_trie
 
 # Appendix Install virtual environment and requirements
 
-## create virtual environment
+## create and activate virtual environment
+### create virtual environment
 In project root directory  
 python3 -m venv ./venv
 
-## activate virtual environment
+#### anaconda
+If using Anaconda, python3 -m venv ./venv may throw error  
+Error: Command '['/Users/stevebaker/Documents/projects/pythonProjects/trie_me/venv/bin/python3', '-Im', 'ensurepip', '--upgrade', '--default-pip']' returned non-zero exit status 1.  
+http://stackoverflow.com/questions/41857088/new-python-3-6-venv-giving-error-on-macos  
+http://stackoverflow.com/questions/41412876/how-do-you-activate-an-anaconda-environment-in-the-terminal-with-mac-os-x?noredirect=1&lq=1  
+
+conda create -n trie_me python=3.6
+
+### activate virtual environment
 cd project root directory  
 activate virtual environment
-### macOS
+#### macOS
 source venv/bin/activate
-### Windows
+#### Windows
 venv\Scripts\activate
 
 venv should show at beginning of command prompt  
