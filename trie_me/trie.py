@@ -7,6 +7,13 @@ class Trie:
     Trie holds a trie data structure
     """
 
+    # For both binary tree and trie, root node level is called level 0.
+    # Unlike a binary tree, a trie root node doesn't hold a single value.
+    # A trie needs (n+1) levels 0-n to hold a string of length n.
+    # social security numbers have length of 9 digits.
+    # if each item is a social security number, the trie needs 10 levels 0-9
+    item_length = 9
+
     def __init__(self, root_node):
         """
         Initializes the class.
