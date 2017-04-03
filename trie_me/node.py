@@ -46,6 +46,9 @@ class Node:
         # True if this node and all of its children have been visited
         self.visited = False
 
+        # typically None or 0 to (values_length - 1) inclusive
+        self.index_largest_child_visited = None
+
     def add_child(self, child):
         """
         :param child: node to be added to children. 
