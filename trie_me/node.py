@@ -6,6 +6,11 @@ class Node:
     Node in trie.
     """
 
+    # number of possible values.
+    # For decimal digits this is 10.
+    # For lowercase ascii alphabet letters could be 26.
+    values_length = 10
+
     @classmethod
     def is_value_valid(cls, value: str) -> bool:
         digit_strings = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
