@@ -38,7 +38,7 @@ class Node:
         self.children = [None, None, None, None, None, None, None, None, None, None]
 
         # visited: Used when traversing the trie.
-        # true if this node and all of its children have been visited
+        # True if this node and all of its children have been visited
         self.visited = False
 
     def add_child(self, child):
