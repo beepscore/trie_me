@@ -37,8 +37,8 @@ class Trie:
 
     def contains(self, item: str) -> bool:
         """
-        :param item: item to find. A string of decimal digits, typically length 9.
-        :return: True if trie contains number. False otherwise.
+        :param item: item to find. A string of zero or more decimal digits.
+        :return: True if trie contains node. False otherwise.
         """
         if self.get_node(item) is not None:
             return True
