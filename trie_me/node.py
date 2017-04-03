@@ -56,3 +56,13 @@ class Node:
             index = int(child.value)
             self.children[index] = child
 
+    def is_leaf_node(self) -> bool:
+        """
+        :return: True if all children are None, False otherwise
+        """
+        for child in self.children:
+            if child is not None:
+                return False
+
+        return True
+

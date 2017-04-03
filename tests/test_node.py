@@ -55,3 +55,13 @@ class TestNode(unittest.TestCase):
         root_node.add_child(child)
         expected = [None, None, child, None, None, None, None, None, None, None]
         self.assertEqual(root_node.children, expected)
+
+    def test_is_leaf_node(self):
+        root_node = node.Node(None)
+        self.assertIsNotNone(root_node)
+        self.assertTrue(root_node.is_leaf_node())
+
+        child = node.Node("2")
+        root_node.add_child(child)
+        self.assertFalse(root_node.is_leaf_node())
+        self.assertTrue(child.is_leaf_node())
