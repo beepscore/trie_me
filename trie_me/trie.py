@@ -66,6 +66,7 @@ class Trie:
 
     def next_larger_sibling_string(self, node_string: str):
         """
+        :param node_string: A string representing a node. May or may not be in trie.
         :return: string for next larger sibling, else None
         """
         node_string_last_character = node_string[-1]
@@ -80,6 +81,27 @@ class Trie:
         for index in range(start_index, Node.values_length):
 
             candidate = Trie.parent_string(node_string) + str(index)
+            if self.contains(candidate):
+                return candidate
+
+        return None
+
+    def next_larger_child_string(self, node_string: str):
+        """
+        :param node_string: A string representing a node. May or may not be in trie.
+        :return: string for next larger child, else None
+        """
+        node = self.get_node(node_string)
+
+        if not self.contains(node_string):
+            # trie doesn't contain node
+            return None
+
+        if node.is_leaf_node():
+            return None
+
+        for index in range(0, Node.values_length):
+            candidate = node_string + str(index)
             if self.contains(candidate):
                 return candidate
 
