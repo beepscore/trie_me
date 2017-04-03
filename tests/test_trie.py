@@ -32,6 +32,11 @@ class TestTrie(unittest.TestCase):
         root_node.add_child(child)
         self.assertEqual(numbers_trie.get_node("2"), None)
 
+    def test_contains_empty_string(self):
+        root_node = node.Node("")
+        numbers_trie = trie.Trie(root_node)
+        self.assertTrue(numbers_trie.contains(""))
+
     def test_contains_in_trie(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
