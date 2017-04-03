@@ -64,6 +64,27 @@ class Trie:
         # loop got all the way to the last digit in number
         return current_node
 
+    def next_larger_sibling_string(self, node_string: str):
+        """
+        :return: string for next larger sibling, else None
+        """
+        node_string_last_character = node_string[-1]
+        node_string_last_character_index = int(node_string_last_character)
+
+        if node_string_last_character_index == Node.values_length - 1:
+            # node at node_string is the largest child
+            return None
+
+        start_index = node_string_last_character_index + 1
+
+        for index in range(start_index, Node.values_length):
+
+            candidate = Trie.parent_string(node_string) + str(index)
+            if self.contains(candidate):
+                return candidate
+
+        return None
+
     def add_item(self, item: str) -> Node:
         """
         :param item: item to add to trie. A string of decimal digits, typically length 9.
