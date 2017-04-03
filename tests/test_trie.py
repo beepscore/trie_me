@@ -83,3 +83,12 @@ class TestTrie(unittest.TestCase):
         self.assertFalse(numbers_trie.contains("222222222"))
         self.assertFalse(numbers_trie.contains("986422389"))
 
+    def test_parent_string(self):
+        self.assertEqual(trie.Trie.parent_string("123456789"), "12345678")
+        self.assertEqual(trie.Trie.parent_string("803517"), "80351")
+
+    def test_parent_string_empty_string(self):
+        root_node = node.Node("")
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_test.txt")
+        self.assertEqual(trie.Trie.parent_string(""), "")

@@ -16,6 +16,18 @@ class Trie:
         """
         self.root_node = root_node
 
+    @classmethod
+    def parent_string(cls, node_string):
+        """
+        :param node_string: string representing a node
+        :return: node_string for parent of this node, node_string characters up to last character
+        """
+        if node_string == "":
+            return ""
+
+        trimmed = node_string[0: len(node_string) - 1]
+        return trimmed
+
     def contains(self, item: str) -> bool:
         """
         :param item: item to find. A string of decimal digits, typically length 9.
