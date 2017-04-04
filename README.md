@@ -57,35 +57,57 @@ This command lists and tests all modules
 python3 -m unittest tests.test_trie tests.test_node
 
 
-# Appendix Install virtual environment and requirements
+# Appendix virtual environment and requirements
 
-## create and activate virtual environment
+## venv create and activate virtual environment
+
 ### create virtual environment
 In project root directory  
 python3 -m venv ./venv
 
-#### anaconda
-If using Anaconda, python3 -m venv ./venv may throw error  
-Error: Command '['/Users/stevebaker/Documents/projects/pythonProjects/trie_me/venv/bin/python3', '-Im', 'ensurepip', '--upgrade', '--default-pip']' returned non-zero exit status 1.  
-http://stackoverflow.com/questions/41857088/new-python-3-6-venv-giving-error-on-macos  
-http://stackoverflow.com/questions/41412876/how-do-you-activate-an-anaconda-environment-in-the-terminal-with-mac-os-x?noredirect=1&lq=1  
-
-conda create -n trie_me python=3.6
-
 ### activate virtual environment
 cd project root directory  
 activate virtual environment
-#### macOS
-source venv/bin/activate
-##### anaconda
-source activate trie_me
-(trie_me) should show at beginning of command prompt  
 
+#### macOS
+
+    source venv/bin/activate
+    
 #### Windows
-venv\Scripts\activate
+
+    venv\Scripts\activate
 
 venv should show at beginning of command prompt  
 
 ## install items in requirements file
 with virtual environment active
-pip3 install -r requirements.txt
+
+    pip3 install -r requirements.txt
+
+## Appendix Anaconda create and activate virtual environment
+
+### create virtual environment
+In project root directory  
+
+If using Anaconda, python3 -m venv ./venv may throw error  
+
+Error: Command '['/Users/stevebaker/Documents/projects/pythonProjects/trie_me/venv/bin/python3', '-Im', 'ensurepip', '--upgrade', '--default-pip']' returned non-zero exit status 1.  
+http://stackoverflow.com/questions/41857088/new-python-3-6-venv-giving-error-on-macos  
+http://stackoverflow.com/questions/41412876/how-do-you-activate-an-anaconda-environment-in-the-terminal-with-mac-os-x?noredirect=1&lq=1  
+
+So instead use anaconda command  
+
+    conda create -n trie_me python=3.6
+
+### activate virtual environment
+cd project root directory  
+activate virtual environment
+
+#### macOS, linux
+
+    source activate trie_me
+    
+(trie_me) should show at beginning of command prompt  
+
+    source deactivate
+
