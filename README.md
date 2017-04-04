@@ -109,5 +109,5 @@ activate virtual environment
     
 (trie_me) should show at beginning of command prompt  
 
-    source deactivate
+    source deactivate trie_me
 
