@@ -27,29 +27,6 @@ def make_trie_from_file(filename: str):
     return trie
 
 
-def contains(trie: dict, word: str) -> bool:
-    """
-    :param trie: trie to search
-    :param word: word to search for
-    :return: True if trie contains word. False otherwise.
-    """
-    if type(word) != str:
-        raise TypeError("Trie only works on str!")
-
-    # start at root level
-    subtrie = trie
-
-    for letter in word:
-        if letter not in subtrie:
-            return False
-
-        # set subtrie to next level down
-        subtrie = subtrie[letter]
-
-    # every letter in word was in corresponding subtrie
-    return True
-
-
 def add_words(trie: dict, *words) -> dict:
     """
     :param trie: trie to add to
@@ -96,6 +73,29 @@ def add_word(trie: dict, word) -> dict:
 
     # finished word. if key '_' doesn't exist, add key-value pair ('_', '_')
     temp_trie.setdefault('_', '_')
+
+
+def contains(trie: dict, word: str) -> bool:
+    """
+    :param trie: trie to search
+    :param word: word to search for
+    :return: True if trie contains word. False otherwise.
+    """
+    if type(word) != str:
+        raise TypeError("Trie only works on str!")
+
+    # start at root level
+    subtrie = trie
+
+    for letter in word:
+        if letter not in subtrie:
+            return False
+
+        # set subtrie to next level down
+        subtrie = subtrie[letter]
+
+    # every letter in word was in corresponding subtrie
+    return True
 
 
 def list_words(trie: dict) -> list:
