@@ -23,8 +23,12 @@ class TestTrie2(unittest.TestCase):
         trie = trie2.make_trie('hello', 'abc', 'baz', 'bar', 'barz')
         trie2.add_words(trie, "bax")
 
-        self.assertEqual(trie, {'h': {'e': {'l': {'l': {'o': {'_': '_'}}}}}, 'a': {'b': {'c': {'_': '_'}}},
-                                'b': {'a': {'z': {'_': '_'}, 'r': {'_': '_', 'z': {'_': '_'}}, 'x': {'_': '_'}}}})
+        self.assertEqual(trie, {
+            'h': {'e': {'l': {'l': {'o': {'_': '_'}}}}},
+            'a': {'b': {'c': {'_': '_'}}},
+            'b': {'a': {'z': {'_': '_'},
+                        'r': {'_': '_', 'z': {'_': '_'}},
+                        'x': {'_': '_'}}}})
 
     def test_make_trie_from_file(self):
 
