@@ -17,7 +17,7 @@ class Trie2:
         return trie
 
     @classmethod
-    def in_trie(cls, trie: dict, word: str) -> bool:
+    def contains(cls, trie: dict, word: str) -> bool:
         """
         :param trie: trie to search
         :param word: word to search for

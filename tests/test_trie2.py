@@ -10,13 +10,13 @@ class TestTrie2(unittest.TestCase):
 
         trie = trie2.Trie2.make_trie('hello', 'abc', 'baz', 'bar', 'barz')
 
-        self.assertTrue(trie2.Trie2.in_trie(trie, 'bar'))
-        self.assertFalse(trie2.Trie2.in_trie(trie, 'bab'))
-        self.assertFalse(trie2.Trie2.in_trie(trie, 'zzz'))
+        self.assertTrue(trie2.Trie2.contains(trie, 'bar'))
+        self.assertFalse(trie2.Trie2.contains(trie, 'bab'))
+        self.assertFalse(trie2.Trie2.contains(trie, 'zzz'))
 
-        self.assertFalse(trie2.Trie2.in_trie(trie, 'bax'))
+        self.assertFalse(trie2.Trie2.contains(trie, 'bax'))
         trie2.Trie2.add(trie, "bax")
-        self.assertTrue(trie2.Trie2.in_trie(trie, 'bax'))
+        self.assertTrue(trie2.Trie2.contains(trie, 'bax'))
 
     def test_make_trie(self):
 
