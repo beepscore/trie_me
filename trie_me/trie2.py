@@ -35,11 +35,18 @@ def contains(trie: dict, word: str) -> bool:
     """
     if type(word) != str:
         raise TypeError("Trie only works on str!")
-    temp_trie = trie
+
+    # start at root level
+    subtrie = trie
+
     for letter in word:
-        if letter not in temp_trie:
+        if letter not in subtrie:
             return False
-        temp_trie = temp_trie[letter]
+
+        # set subtrie to next level down
+        subtrie = subtrie[letter]
+
+    # every letter in word was in corresponding subtrie
     return True
 
 
