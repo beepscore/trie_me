@@ -44,6 +44,9 @@ class Trie2:
                 raise TypeError("Trie only works on str!")
             temp_trie = trie
             for letter in word:
+                # if temp_trie[letter] exists, returns the value
+                # if temp_trie[letter] doesn't exist, adds key-value pair temp_trie[letter] = {}
+                # http://xwell.org/2015/04/07/python-tricks-setdefault
                 # http://stackoverflow.com/questions/7423428/python-dict-get-vs-setdefault#7423648
                 temp_trie = temp_trie.setdefault(letter, {})
             temp_trie.setdefault('_', '_')
