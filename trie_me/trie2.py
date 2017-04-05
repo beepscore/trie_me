@@ -17,8 +17,9 @@ class Trie2:
                 raise TypeError("Trie only works on str!")
             temp_trie = trie
             for letter in word:
+                # temp_trie type may be either str or dict
                 temp_trie = temp_trie.setdefault(letter, {})
-            temp_trie = temp_trie.setdefault('_', '_')
+            temp_trie.setdefault('_', '_')
         return trie
 
     # Is a word in the trie
