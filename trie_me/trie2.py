@@ -7,12 +7,13 @@
 class Trie2:
 
     @classmethod
-    def make_trie(cls, *args):
+    def make_trie(cls, *words):
         """
-        Make a trie by given words.
+        :param words: words to add to trie
+        :return: trie containing words
         """
         trie = {}
-        for word in args:
+        for word in words:
             if type(word) != str:
                 raise TypeError("Trie only works on str!")
             temp_trie = trie
