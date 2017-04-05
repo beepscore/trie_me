@@ -26,4 +26,9 @@ class TestTrie2(unittest.TestCase):
         self.assertEqual(trie, {'h': {'e': {'l': {'l': {'o': {'_': '_'}}}}}, 'a': {'b': {'c': {'_': '_'}}},
                                 'b': {'a': {'z': {'_': '_'}, 'r': {'_': '_', 'z': {'_': '_'}}, 'x': {'_': '_'}}}})
 
+    def test_list_words(self):
+
+        trie = trie2.Trie2.make_trie('hello', 'abc', 'baz', 'bar', 'barz')
+        trie2.Trie2.add(trie, "bax")
+
         self.assertEqual(trie2.Trie2.list_words(trie), ['hello', 'abc', 'baz', 'bar', 'barz', 'bax'])
