@@ -14,9 +14,10 @@ class TestTrie2(unittest.TestCase):
         self.assertFalse(trie2.Trie2.in_trie(trie, 'bab'))
         self.assertFalse(trie2.Trie2.in_trie(trie, 'zzz'))
 
+        self.assertFalse(trie2.Trie2.in_trie(trie, 'bax'))
         trie2.Trie2.add(trie, "bax")
         self.assertTrue(trie2.Trie2.in_trie(trie, 'bax'))
-        
+
         self.assertTrue(trie2.Trie2.in_trie(trie, 'baz'))
 
         self.assertEqual(trie, {'h': {'e': {'l': {'l': {'o': {'_': '_'}}}}}, 'a': {'b': {'c': {'_': '_'}}},
