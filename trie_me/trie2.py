@@ -41,14 +41,19 @@ class Trie2:
 
     # add to the trie
     @classmethod
-    def add(cls, trie, *args):
-        for word in args:
+    def add(cls, trie, *words):
+        """
+        :param trie: trie to add to
+        :param words: words to add to trie
+        :return: trie
+        """
+        for word in words:
             if type(word) != str:
                 raise TypeError("Trie only works on str!")
             temp_trie = trie
             for letter in word:
                 temp_trie = temp_trie.setdefault(letter, {})
-            temp_trie = temp_trie.setdefault('_', '_')
+            temp_trie.setdefault('_', '_')
         return trie
 
     # stack overflow answer
