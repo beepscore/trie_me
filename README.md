@@ -5,6 +5,8 @@ Python implement trie data structure as practice.
 ## Trie Wikipedia
 https://en.wikipedia.org/wiki/Trie
 
+http://stackoverflow.com/questions/11015320/how-to-create-a-trie-in-python#11016430
+
 ## Python html5lib/trie
 https://github.com/html5lib/html5lib-python
 
