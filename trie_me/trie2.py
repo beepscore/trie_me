@@ -22,13 +22,12 @@ class Trie2:
             temp_trie.setdefault('_', '_')
         return trie
 
-    # Is a word in the trie
     @classmethod
-    def in_trie(cls, trie, word):
+    def in_trie(cls, trie, word: str) -> bool:
         """
-        Detect if word in trie.
-        :param word:
-        :param trie:
+        :param trie: trie to search
+        :param word: word to search for
+        :return: True if trie contains word. False otherwise.
         """
         if type(word) != str:
             raise TypeError("Trie only works on str!")
