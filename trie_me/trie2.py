@@ -7,7 +7,7 @@ def make_trie(*words) -> dict:
     :return: trie containing words
     """
     trie = {}
-    add(trie, *words)
+    add_words(trie, *words)
     return trie
 
 
@@ -27,7 +27,7 @@ def contains(trie: dict, word: str) -> bool:
     return True
 
 
-def add(trie: dict, *words) -> dict:
+def add_words(trie: dict, *words) -> dict:
     """
     :param trie: trie to add to
     :param words: words to add to trie
