@@ -7,24 +7,17 @@ class Trie2:
     """
 
     @classmethod
-    def make_trie(cls, *words):
+    def make_trie(cls, *words) -> dict:
         """
         :param words: words to add to trie
         :return: trie containing words
         """
         trie = {}
-        for word in words:
-            if type(word) != str:
-                raise TypeError("Trie only works on str!")
-            temp_trie = trie
-            for letter in word:
-                # temp_trie type may be either str or dict
-                temp_trie = temp_trie.setdefault(letter, {})
-            temp_trie.setdefault('_', '_')
+        Trie2.add(trie, *words)
         return trie
 
     @classmethod
-    def in_trie(cls, trie, word: str) -> bool:
+    def in_trie(cls, trie: dict, word: str) -> bool:
         """
         :param trie: trie to search
         :param word: word to search for
@@ -40,7 +33,7 @@ class Trie2:
         return True
 
     @classmethod
-    def add(cls, trie, *words):
+    def add(cls, trie: dict, *words) -> dict:
         """
         :param trie: trie to add to
         :param words: words to add to trie
@@ -56,7 +49,7 @@ class Trie2:
         return trie
 
     @classmethod
-    def list_words(cls, trie):
+    def list_words(cls, trie: dict):
         """
         stack overflow answer
         http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
