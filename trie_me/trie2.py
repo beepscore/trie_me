@@ -103,11 +103,13 @@ def list_words(trie: dict) -> list:
     # To list words in order, need to sort keys.
     keys_sorted = sorted(trie.keys())
 
-    for key in keys_sorted:
-        if key != '_':
-            # recursive call
-            for el in list_words(trie[key]):
-                my_list.append(key + el)
+    for prefix in keys_sorted:
+        if prefix != '_':
+            # recursive call deeper into trie
+            suffixes = list_words(trie[prefix])
+            
+            for suffix in suffixes:
+                my_list.append(prefix + suffix)
         else:
             my_list.append('')
     return my_list
