@@ -105,8 +105,9 @@ def list_words(trie: dict) -> list:
 
     for prefix in keys_sorted:
         if prefix != '_':
-            # recursive call deeper into trie
-            suffixes = list_words(trie[prefix])
+            subtrie = trie[prefix]
+            # recurse into subtrie
+            suffixes = list_words(subtrie)
             
             for suffix in suffixes:
                 my_list.append(prefix + suffix)
