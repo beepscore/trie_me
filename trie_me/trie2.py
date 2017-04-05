@@ -37,38 +37,42 @@ def add(trie: dict, *words) -> dict:
         # print("trie {0}".format(trie))
         # print("word {0}".format(word))
 
-        if type(word) != str:
-            raise TypeError("Trie only works on str!")
-
-        temp_trie = trie
-
-        for letter in word:
-            # print("letter {0}".format(letter))
-
-            default_value = {}
-
-            # this statement does a lot!
-            # it has side effect on trie
-            # if temp_trie[letter] exists, setdefault returns the value
-            #
-            # if temp_trie[letter] doesn't exist,
-            # setdefault adds key-value pair (letter, default_value)
-            # to both temp_trie and to trie, and returns default_value
-            #
-            # In either case, the statement reassigns temp_trie
-            # to reference the returned value.
-            # trie contains the value referenced by temp_trie.
-            # If a subsequent iteration adds to temp_trie, that affects trie.
-            # This creates the nested dictionary structure
-            # http://xwell.org/2015/04/07/python-tricks-setdefault
-            temp_trie = temp_trie.setdefault(letter, default_value)
-
-            # print("trie {0}, temp_trie {1}".format(trie, temp_trie))
-
-        # finished word. if key '_' doesn't exist, add key-value pair ('_', '_')
-        temp_trie.setdefault('_', '_')
+        add_word(trie, word)
 
     return trie
+
+
+def add_word(trie: dict, word) -> dict:
+    if type(word) != str:
+        raise TypeError("Trie only works on str!")
+
+    temp_trie = trie
+
+    for letter in word:
+        # print("letter {0}".format(letter))
+
+        default_value = {}
+
+        # this statement does a lot!
+        # it has side effect on trie
+        # if temp_trie[letter] exists, setdefault returns the value
+        #
+        # if temp_trie[letter] doesn't exist,
+        # setdefault adds key-value pair (letter, default_value)
+        # to both temp_trie and to trie, and returns default_value
+        #
+        # In either case, the statement reassigns temp_trie
+        # to reference the returned value.
+        # trie contains the value referenced by temp_trie.
+        # If a subsequent iteration adds to temp_trie, that affects trie.
+        # This creates the nested dictionary structure
+        # http://xwell.org/2015/04/07/python-tricks-setdefault
+        temp_trie = temp_trie.setdefault(letter, default_value)
+
+        # print("trie {0}, temp_trie {1}".format(trie, temp_trie))
+
+    # finished word. if key '_' doesn't exist, add key-value pair ('_', '_')
+    temp_trie.setdefault('_', '_')
 
 
 def list_words(trie: dict) -> list:
