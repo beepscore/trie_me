@@ -58,3 +58,18 @@ class TestTrie2(unittest.TestCase):
         self.assertEqual(trie2.list_words(trie),
                          ['012345678', '123456789', '555555555', '588327984', '588327987', '588327988'])
 
+    def test_contains_true(self):
+
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+
+        self.assertTrue(trie2.contains(trie, '012345678'))
+        self.assertTrue(trie2.contains(trie, '123456789'))
+        self.assertTrue(trie2.contains(trie, '588327984'))
+        self.assertTrue(trie2.contains(trie, '555555555'))
+
+    def test_contains_false(self):
+
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+
+        self.assertFalse(trie2.contains(trie, '222222222'))
+        self.assertFalse(trie2.contains(trie, '986422389'))
