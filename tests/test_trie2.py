@@ -18,7 +18,7 @@ class TestTrie2(unittest.TestCase):
         trie2.Trie2.add(trie, "bax")
         self.assertTrue(trie2.Trie2.in_trie(trie, 'bax'))
 
-    def test_trie2(self):
+    def test_make_trie(self):
 
         trie = trie2.Trie2.make_trie('hello', 'abc', 'baz', 'bar', 'barz')
         trie2.Trie2.add(trie, "bax")
