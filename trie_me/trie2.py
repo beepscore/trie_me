@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-# http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
-# Make My trie
-
 
 class Trie2:
+    """
+        # http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
+    """
 
     @classmethod
     def make_trie(cls, *words):
@@ -39,7 +39,6 @@ class Trie2:
             temp_trie = temp_trie[letter]
         return True
 
-    # add to the trie
     @classmethod
     def add(cls, trie, *words):
         """
@@ -56,9 +55,14 @@ class Trie2:
             temp_trie.setdefault('_', '_')
         return trie
 
-    # stack overflow answer
     @classmethod
     def list_words(cls, trie):
+        """
+        stack overflow answer
+        http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
+        :param trie: trie to list
+        :return: list of words in trie, in order added to trie. Not sorted alphabetically.
+        """
         my_list = []
         for k, v in trie.items():
             if k != '_':
