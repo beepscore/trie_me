@@ -21,3 +21,4 @@ class TestTrie(unittest.TestCase):
         print(trie2.Trie2.in_trie(trie, 'baz'))
         print(trie)
         trie2.Trie2.list(trie, "", 'hello')
+        print(trie2.Trie2.list_words(trie))

@@ -62,4 +62,16 @@ class Trie2:
        for index, word in enumerate(temp_trie):
            print(temp_trie[word])
 
+    # stack overflow answer
+    @classmethod
+    def list_words(cls, trie):
+        my_list = []
+        for k, v in trie.items():
+            if k != '_':
+                # recursive call
+                for el in Trie2.list_words(v):
+                    my_list.append(k+el)
+            else:
+                my_list.append('')
+        return my_list
 
