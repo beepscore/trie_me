@@ -31,4 +31,5 @@ class TestTrie2(unittest.TestCase):
         trie = trie2.Trie2.make_trie('hello', 'abc', 'baz', 'bar', 'barz')
         trie2.Trie2.add(trie, "bax")
 
-        self.assertEqual(trie2.Trie2.list_words(trie), ['hello', 'abc', 'baz', 'bar', 'barz', 'bax'])
+        self.assertEqual(trie2.Trie2.list_words(trie), ['abc', 'bar', 'barz', 'bax', 'baz', 'hello'])
+

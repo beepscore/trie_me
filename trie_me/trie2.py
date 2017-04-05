@@ -52,17 +52,21 @@ class Trie2:
     @classmethod
     def list_words(cls, trie: dict):
         """
-        stack overflow answer
+        reference stack overflow answer
         http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
         :param trie: trie to list
-        :return: list of words in trie, in order added to trie. Not sorted alphabetically.
+        :return: list of words in trie, sorted alphabetically.
         """
         my_list = []
-        for k, v in trie.items():
-            if k != '_':
+        # trie is composed of nested dictionaries, which aren't sorted.
+        # To list words in order, need to sort keys.
+        keys_sorted = sorted(trie.keys())
+
+        for key in keys_sorted:
+            if key != '_':
                 # recursive call
-                for el in Trie2.list_words(v):
-                    my_list.append(k+el)
+                for el in Trie2.list_words(trie[key]):
+                    my_list.append(key + el)
             else:
                 my_list.append('')
         return my_list
