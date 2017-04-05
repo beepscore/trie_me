@@ -6,7 +6,6 @@
 
 class Trie2:
 
-
     @classmethod
     def make_trie(cls, *args):
         """
@@ -21,7 +20,6 @@ class Trie2:
                 temp_trie = temp_trie.setdefault(letter, {})
             temp_trie = temp_trie.setdefault('_', '_')
         return trie
-
 
     # Is a word in the trie
     @classmethod
@@ -39,7 +37,6 @@ class Trie2:
                 return False
             temp_trie = temp_trie[letter]
         return True
-
 
     # add to the trie
     @classmethod
