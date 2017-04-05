@@ -50,15 +50,6 @@ class Trie2:
             temp_trie = temp_trie.setdefault('_', '_')
         return trie
 
-
-    # My Attempt to list out words
-    @classmethod
-    def list(cls, obj, text, words):
-       str = ""
-       temp_trie = obj
-       for index, word in enumerate(temp_trie):
-           print(temp_trie[word])
-
     # stack overflow answer
     @classmethod
     def list_words(cls, trie):
