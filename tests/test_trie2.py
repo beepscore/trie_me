@@ -47,3 +47,10 @@ class TestTrie2(unittest.TestCase):
 
         self.assertEqual(trie2.list_words(trie), ['abc', 'bar', 'barz', 'bax', 'baz', 'hello'])
 
+    def test_list_words_from_file(self):
+
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+
+        self.assertEqual(trie2.list_words(trie),
+                         ['012345678', '123456789', '555555555', '588327984', '588327987', '588327988'])
+
