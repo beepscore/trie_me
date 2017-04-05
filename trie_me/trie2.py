@@ -11,6 +11,22 @@ def make_trie(*words) -> dict:
     return trie
 
 
+def make_trie_from_file(filename: str):
+    """
+    :param filename: name of file containing words to add to trie. One word per line.
+    :return: trie containing words
+    """
+    with open(filename, 'r', encoding='utf-8') as lines:
+
+        trie = {}
+
+        for line in lines:
+            word = line.strip('\n')
+            add_word(trie, word)
+
+    return trie
+
+
 def contains(trie: dict, word: str) -> bool:
     """
     :param trie: trie to search
