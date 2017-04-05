@@ -44,6 +44,7 @@ class Trie2:
                 raise TypeError("Trie only works on str!")
             temp_trie = trie
             for letter in word:
+                # http://stackoverflow.com/questions/7423428/python-dict-get-vs-setdefault#7423648
                 temp_trie = temp_trie.setdefault(letter, {})
             temp_trie.setdefault('_', '_')
         return trie
