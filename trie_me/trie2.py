@@ -113,9 +113,13 @@ def list_words(trie: dict) -> list:
     # To list words in order, need to sort keys.
     keys_sorted = sorted(trie.keys())
 
+    # prefix is a single character
     for prefix in keys_sorted:
         if prefix != '_':
+
+            # set subtrie to next level down
             subtrie = trie[prefix]
+
             # recurse into subtrie
             suffixes = list_words(subtrie)
             
