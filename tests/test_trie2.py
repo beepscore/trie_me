@@ -66,6 +66,7 @@ class TestTrie2(unittest.TestCase):
         self.assertTrue(trie2.contains(trie, '123456789'))
         self.assertTrue(trie2.contains(trie, '588327984'))
         self.assertTrue(trie2.contains(trie, '555555555'))
+        self.assertTrue(trie2.contains(trie, '012'))
 
     def test_contains_false(self):
 
