@@ -163,7 +163,7 @@ def successor(trie: dict, node_string: str, trie_level: int) -> str:
     :param trie: trie to search
     :param node_string: A string representing a node. May or may not be in trie.
     :param trie_level: level in the trie. trie_level 0 contains root node
-            first call with trie_level = 0?
+            first call with trie_level = 1
     :return: next greater word in trie, else None
     return None if len(node_string) > 9.
     """
@@ -184,43 +184,42 @@ def successor(trie: dict, node_string: str, trie_level: int) -> str:
     # TODO: handle key or value are end_char
 
     # walk down trie along node_string as far as possible
-    for index in range(0, len(node_string)):
 
-        prefix = node_string[:index + 1]
+    prefix = node_string[:trie_level + 1]
 
-        if contains(trie, prefix):
+    if contains(trie, prefix):
 
-            subtrie = subtrie[node_string[index]]
+        subtrie = subtrie[node_string[trie_level]]
 
-            if index == len(node_string) - 1:
-                # at last letter of node_string
+        if trie_level == len(node_string) - 1:
+            # at last letter of node_string
 
-                if index == number_of_trie_levels:
-                    # at bottom level of tree
-                    # current_key is prefix last letter
-                    current_key = prefix[-1]
-                    sk = successor_key(subtrie, current_key)
-                    if sk is not None:
-                        # found next larger sibling
-                        return prefix[: -1] + sk
-
-                    else:
-                        # no larger sibling, ascend trie one level
-                        # FIXME: check successor key on previous level??
-                        return successor(trie, prefix[: -1], trie_level - 1)
+            if trie_level == number_of_trie_levels:
+                # at bottom level of tree
+                # current_key is prefix last letter
+                current_key = prefix[-1]
+                sk = successor_key(subtrie, current_key)
+                if sk is not None:
+                    # found next larger sibling
+                    return prefix[: -1] + sk
 
                 else:
-                    # not at bottom of trie, keep walking down
-                    # FIXME:
-                    break
-            else:
-                # advance to node_string next letter
-                return successor(trie, node_string, index + 1)
+                    # no larger sibling, ascend trie one level
+                    # FIXME: check successor key on previous level??
+                    return successor(trie, prefix[: -1], trie_level - 1)
 
+            else:
+                # not at bottom of trie, keep walking down
+                # FIXME:
+                pass
         else:
-            # trie doesn't contain prefix
-            # FIXME:
-            break
+            # advance to node_string next letter
+            return successor(trie, node_string, trie_level + 1)
+
+    else:
+        # trie doesn't contain prefix
+        # FIXME:
+        pass
 
     # default for now
     # FIXME: By definition this is wrong!
