@@ -190,8 +190,6 @@ def successor(trie: dict, node_string: str, trie_level: int) -> str:
 
                 if index == number_of_trie_levels:
                     # at bottom level of tree
-
-                    # TODO: check next key on this level
                     # current_key is prefix last letter
                     current_key = prefix[-1]
                     sk = successor_key(subtrie, current_key)
