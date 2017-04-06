@@ -111,6 +111,8 @@ def list_words(trie: dict) -> list:
     my_list = []
     # trie is composed of nested dictionaries, which aren't sorted.
     # To list words in order, need to sort keys.
+    # For ascii lowercase alpha there are <=26, and for decimal digits there are <=10.
+    # (plus key '_')
     keys_sorted = sorted(trie.keys())
 
     # prefix is a single character
