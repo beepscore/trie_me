@@ -155,10 +155,14 @@ def successor_key(trie: dict, key: str) -> str:
 
 def successor(trie: dict, node_string: str, trie_level: int) -> str:
     """
+    for trie of fixed length items such as 9 digit numbers,
+    number of levels including end_char is item length + root + end_char = 11
+    We can avoid checking end_char level
+    This method checks to number_of_trie_levels = 10
+    
     :param trie: trie to search
     :param node_string: A string representing a node. May or may not be in trie.
     :param trie_level: level in the trie. trie_level 0 contains root node
-            number_of_trie_levels = 10
             first call with trie_level = 0?
     :return: next greater word in trie, else None
     return None if len(node_string) > 9.
