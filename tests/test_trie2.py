@@ -80,3 +80,10 @@ class TestTrie2(unittest.TestCase):
         self.assertEqual(trie2.successor_key(trie, "0"), "1")
         self.assertEqual(trie2.successor_key(trie, "1"), "5")
 
+    def test_successor_key_digit_not_in_trie(self):
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+        self.assertEqual(trie2.successor_key(trie, "2"), "5")
+
+    def test_successor_key_none(self):
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+        self.assertEqual(trie2.successor_key(trie, "_"), None)
