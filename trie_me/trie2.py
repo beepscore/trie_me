@@ -133,6 +133,12 @@ def list_words(trie: dict) -> list:
 
 
 def successor_key(trie: dict, key: str) -> str:
+    """
+    :param trie: trie to search
+    :param key: typically a one letter string containing a decimal digit e.g. "2" 
+    :return: first key in trie with int value greater than key int value, else None
+    return None if key equals "_"
+    """
     if key == '_':
         return None
 
