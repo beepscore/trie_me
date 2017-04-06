@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# sentinel character, terminal key or value at end of a path
+end_char = '_'
+
 
 def make_trie(*words) -> dict:
     """
@@ -74,8 +77,8 @@ def add_word(trie: dict, word) -> dict:
         # print("trie {0}".format(trie))
         # print("subtrie {0}".format(subtrie))
 
-    # finished word. if key '_' doesn't exist, add key-value pair ('_', '_')
-    subtrie.setdefault('_', '_')
+    # finished word. if key end_char doesn't exist, add key-value pair (end_char, end_char)
+    subtrie.setdefault(end_char, end_char)
 
 
 def contains(trie: dict, word: str) -> bool:
@@ -112,12 +115,12 @@ def list_words(trie: dict) -> list:
     # trie is composed of nested dictionaries, which aren't sorted.
     # To list words in order, need to sort keys.
     # For ascii lowercase alpha there are <=26, and for decimal digits there are <=10.
-    # (plus key '_')
+    # (plus key end_char)
     keys_sorted = sorted(trie.keys())
 
     # prefix is a single character
     for prefix in keys_sorted:
-        if prefix != '_':
+        if prefix != end_char:
 
             # set subtrie to next level down
             subtrie = trie[prefix]
@@ -139,7 +142,7 @@ def successor_key(trie: dict, key: str) -> str:
     :return: first key in trie with int value greater than key int value, else None
     return None if key equals "_"
     """
-    if key == '_':
+    if key == end_char:
         return None
 
     keys_sorted = sorted(trie.keys())
@@ -174,7 +177,7 @@ def successor(trie: dict, node_string: str, trie_level: int) -> str:
     # navigation stack is the letters of the node_string
     # push/pop a letter onto string to handle navigation
 
-    # TODO: handle key or value are '_'
+    # TODO: handle key or value are end_char
 
     # walk down trie along node_string as far as possible
     for index in range(0, len(node_string)):
