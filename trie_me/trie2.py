@@ -132,3 +132,15 @@ def list_words(trie: dict) -> list:
     return my_list
 
 
+def successor_key(trie: dict, key: str) -> str:
+    if key == '_':
+        return None
+
+    keys_sorted = sorted(trie.keys())
+    for candidate_key in keys_sorted:
+        if int(candidate_key) > int(key):
+            return candidate_key
+
+    return None
+
+

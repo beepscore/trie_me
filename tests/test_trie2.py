@@ -74,3 +74,9 @@ class TestTrie2(unittest.TestCase):
 
         self.assertFalse(trie2.contains(trie, '222222222'))
         self.assertFalse(trie2.contains(trie, '986422389'))
+
+    def test_successor_key(self):
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+        self.assertEqual(trie2.successor_key(trie, "0"), "1")
+        self.assertEqual(trie2.successor_key(trie, "1"), "5")
+
