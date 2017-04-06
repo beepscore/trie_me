@@ -87,3 +87,9 @@ class TestTrie2(unittest.TestCase):
     def test_successor_key_none(self):
         trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
         self.assertEqual(trie2.successor_key(trie, "_"), None)
+
+    def test_successor(self):
+        trie = trie2.make_trie_from_file("./data/input/numbers_test.txt")
+        # TODO: Fix RecursionError: maximum recursion depth exceeded in comparison
+        self.assertEqual(trie2.successor(trie, '12345678', 0),  '12345678')
+
