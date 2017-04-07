@@ -73,13 +73,13 @@ class Trie:
         node_string_last_character = node_string[-1]
         node_string_last_character_index = int(node_string_last_character)
 
-        if node_string_last_character_index == Node.values_length - 1:
+        if node_string_last_character_index == Node.keys_length - 1:
             # node at node_string is the largest child
             return None
 
         start_index = node_string_last_character_index + 1
 
-        for index in range(start_index, Node.values_length):
+        for index in range(start_index, Node.keys_length):
 
             candidate = Trie.parent_string(node_string) + str(index)
             if self.contains(candidate):
@@ -102,7 +102,7 @@ class Trie:
             # leaf node never has children
             return None
 
-        for index in range(0, Node.values_length):
+        for index in range(0, Node.keys_length):
             if node.children[index] is not None:
                 candidate_child_string = string + str(index)
                 return candidate_child_string

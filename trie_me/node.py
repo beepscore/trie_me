@@ -4,8 +4,8 @@
 class Node:
     """Node in trie."""
 
-    values_length = 10
-    """int: number of possible values.
+    keys_length = 10
+    """int: number of possible children keys.
     For decimal digits this is 10.
     For lowercase ascii alphabet letters could be 26."""
 
@@ -41,7 +41,7 @@ class Node:
         # True if this node and all of its children have been visited
         self.visited = False
 
-        # typically None or 0 to (values_length - 1) inclusive
+        # typically None or 0 to (keys_length - 1) inclusive
         self.index_largest_child_visited = None
 
     # TODO: Consider delete method or call it in trie
