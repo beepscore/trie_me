@@ -37,10 +37,11 @@ class Trie:
 
     def contains(self, string: str) -> bool:
         """
-        :param string: string to find. A string of zero or more decimal digits.
-        :return: True if trie contains node. False otherwise.
+        :param string: string to search. A string of zero or more decimal digits.
+        :return: True if node is not None and node.name is not None. False otherwise.
         """
-        if self.get_node(string) is not None:
+        node = self.get_node(string)
+        if node is not None and node.name is not None:
             return True
         else:
             return False
@@ -86,24 +87,25 @@ class Trie:
 
         return None
 
-    def next_larger_child_string(self, node_string: str):
+    def next_larger_child_string(self, string: str):
         """
-        :param node_string: A string representing a node. May or may not be in trie.
-        :return: string for next larger child, else None
+        :param string: A string representing a parent node. May or may not be in trie.
+        :return: string for next larger child node. else None
+        return None if all larger children are None
         """
-        node = self.get_node(node_string)
+        node = self.get_node(string)
 
-        if not self.contains(node_string):
-            # trie doesn't contain node
+        if node is None:
             return None
 
         if node.is_leaf_node():
+            # leaf node never has children
             return None
 
         for index in range(0, Node.values_length):
-            candidate = node_string + str(index)
-            if self.contains(candidate):
-                return candidate
+            if node.children[index] is not None:
+                candidate_child_string = string + str(index)
+                return candidate_child_string
 
         return None
 

@@ -31,6 +31,10 @@ class TestNode(unittest.TestCase):
         my_node = node.Node()
         self.assertIsNotNone(my_node)
 
+    def test_name_default_none(self):
+        my_node = node.Node()
+        self.assertEqual(my_node.name, None)
+
     def test_children_none(self):
         my_node = node.Node()
         expected = [None, None, None, None, None, None, None, None, None, None]

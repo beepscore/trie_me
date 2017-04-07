@@ -9,7 +9,7 @@ class Node:
     For decimal digits this is 10.
     For lowercase ascii alphabet letters could be 26."""
 
-    name = ""
+    name = None
     """str: e.g. In a trie of social security numbers, leaf node name could be the person's name."""
 
     @classmethod
@@ -44,6 +44,7 @@ class Node:
         # typically None or 0 to (values_length - 1) inclusive
         self.index_largest_child_visited = None
 
+    # TODO: Consider delete method or call it in trie
     def add_child(self, key: str, child):
         """
         :param key: string to convert to children index

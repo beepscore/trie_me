@@ -35,13 +35,19 @@ class TestTrie(unittest.TestCase):
     def test_contains_empty_string(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
-        self.assertTrue(numbers_trie.contains(""))
+        self.assertFalse(numbers_trie.contains(""))
 
     def test_contains_in_trie(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         child = node.Node()
         root_node.add_child("6", child)
+        # child is in trie, but it doesn't have a name
+        self.assertIsNone(child.name)
+        self.assertFalse(numbers_trie.contains("6"))
+
+        child.name = "Ron"
+        self.assertEqual(child.name, "Ron")
         self.assertTrue(numbers_trie.contains("6"))
 
     def test_contains_node_not_in_trie(self):
@@ -63,9 +69,23 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(numbers_trie.next_larger_child_string(""), "0")
         self.assertEqual(numbers_trie.next_larger_child_string("58832798"), "588327984")
         self.assertIsNone(numbers_trie.next_larger_child_string("588327988"))
+
+    def test_next_larger_child_string_doesnt_contain(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        # "" trie doesn't "contain" argument
+        self.assertEqual(numbers_trie.next_larger_child_string(""), "0")
+        self.assertEqual(numbers_trie.next_larger_child_string("0"), "01")
+
+    def test_next_larger_child_string_node_not_in_trie(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        # "" trie doesn't "contain" argument
+        self.assertEqual(numbers_trie.next_larger_child_string("3"), None)
 
     def test_add_item_contains_true(self):
         root_node = node.Node()
