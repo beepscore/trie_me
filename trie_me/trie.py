@@ -35,25 +35,25 @@ class Trie:
         trimmed = node_string[0: len(node_string) - 1]
         return trimmed
 
-    def contains(self, item: str) -> bool:
+    def contains(self, string: str) -> bool:
         """
-        :param item: item to find. A string of zero or more decimal digits.
+        :param string: string to find. A string of zero or more decimal digits.
         :return: True if trie contains node. False otherwise.
         """
-        if self.get_node(item) is not None:
+        if self.get_node(string) is not None:
             return True
         else:
             return False
 
-    def get_node(self, item: str) -> Node:
+    def get_node(self, string: str):
         """
-        :param item: item to find. A string of decimal digits, typically length 9.
-        :return: node at position described by item. 
+        :param string: string to find. A string of zero or more decimal digits.
+        :return: node at position described by string. 
         If node doesn't exist, return None
         """
         current_node = self.root_node
 
-        for character in item:
+        for character in string:
             index = int(character)
             if current_node.children[index] is None:
                 # didn't find a match
@@ -61,7 +61,7 @@ class Trie:
             else:
                 current_node = current_node.children[index]
 
-        # loop got all the way to the last digit in number
+        # loop got all the way to the last character in string
         return current_node
 
     def next_larger_sibling_string(self, node_string: str):
