@@ -107,10 +107,11 @@ class Trie:
 
         return None
 
-    def add_item(self, item: str) -> Node:
+    def add_item(self, item: str, name: str) -> Node:
         """
         :param item: item to add to trie. A string of decimal digits, typically length 9.
-        :return: terminal node at position described by item. 
+        :param name: name associated with this item, stored in the leaf node.
+        :return: leaf node at position described by item. 
         If trie contains item, this method overwrites it.
         """
         current_node = self.root_node
@@ -125,12 +126,15 @@ class Trie:
             current_node = current_node.children[index]
 
         # loop got all the way to the last digit in number
+        current_node.name = name
         return current_node
 
     def add_items(self, filename: str):
         with open(filename, 'r', encoding='utf-8') as items:
 
             for line in items:
-                item = line.strip('\n')
-                self.add_item(item)
+                line_list = line.strip('\n').split(',')
+                item = line_list[0]
+                name = line_list[1]
+                self.add_item(item, name)
 

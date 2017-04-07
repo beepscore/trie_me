@@ -2,14 +2,15 @@
 
 
 class Node:
-    """
-    Node in trie.
-    """
+    """Node in trie."""
 
-    # number of possible values.
-    # For decimal digits this is 10.
-    # For lowercase ascii alphabet letters could be 26.
     values_length = 10
+    """int: number of possible values.
+    For decimal digits this is 10.
+    For lowercase ascii alphabet letters could be 26."""
+
+    name = ""
+    """str: e.g. In a trie of social security numbers, leaf node name could be the person's name."""
 
     @classmethod
     def is_value_valid(cls, value: str) -> bool:

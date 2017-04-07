@@ -71,16 +71,18 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
         item = "123456789"
+        name = "jorge"
         self.assertFalse(numbers_trie.contains(item))
-        numbers_trie.add_item(item)
+        numbers_trie.add_item(item, name)
         self.assertTrue(numbers_trie.contains(item))
 
     def test_add_item_contains_false(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
         item = "123456789"
+        name = "jorge"
         self.assertFalse(numbers_trie.contains(item))
-        numbers_trie.add_item(item)
+        numbers_trie.add_item(item, name)
         self.assertFalse(numbers_trie.contains("987654321"))
 
     def test_add_items_contains_true(self):
