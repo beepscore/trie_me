@@ -123,6 +123,7 @@ venv/*
 # data/*
 data/input/*
 !data/input/numbers_test.txt
+!data/input/numbers_names_test.txt
 
 # csv files
 *.csv

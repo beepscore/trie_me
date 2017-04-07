@@ -54,7 +54,7 @@ class TestTrie(unittest.TestCase):
     def test_next_larger_sibling_string(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_test.txt")
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertEqual(numbers_trie.next_larger_sibling_string("588327984"), "588327987")
         self.assertEqual(numbers_trie.next_larger_sibling_string("588327987"), "588327988")
         self.assertIsNone(numbers_trie.next_larger_sibling_string("588327988"))
@@ -62,7 +62,7 @@ class TestTrie(unittest.TestCase):
     def test_next_larger_child_string(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_test.txt")
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertEqual(numbers_trie.next_larger_child_string(""), "0")
         self.assertEqual(numbers_trie.next_larger_child_string("58832798"), "588327984")
         self.assertIsNone(numbers_trie.next_larger_child_string("588327988"))
@@ -88,7 +88,7 @@ class TestTrie(unittest.TestCase):
     def test_add_items_contains_true(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_test.txt")
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertTrue(numbers_trie.contains("123456789"))
         self.assertTrue(numbers_trie.contains("588327984"))
         self.assertTrue(numbers_trie.contains("555555555"))
@@ -96,13 +96,13 @@ class TestTrie(unittest.TestCase):
     def test_add_items_contains_leading0(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_test.txt")
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertTrue(numbers_trie.contains("012345678"))
 
     def test_add_items_contains_false(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_test.txt")
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertFalse(numbers_trie.contains("222222222"))
         self.assertFalse(numbers_trie.contains("986422389"))
 
@@ -113,5 +113,5 @@ class TestTrie(unittest.TestCase):
     def test_parent_string_empty_string(self):
         root_node = node.Node("")
         numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_test.txt")
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertEqual(trie.Trie.parent_string(""), "")
