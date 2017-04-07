@@ -130,11 +130,16 @@ class Trie:
         return current_node
 
     def add_items(self, filename: str):
+        """
+        :param filename: name of file to read from.
+        file is comma separated value, each line is of the form <string>, <name>
+        e.g. each line is like 123456789, "Joe Smith"
+        """
         with open(filename, 'r', encoding='utf-8') as items:
 
-            for line in items:
-                line_list = line.strip('\n').split(',')
-                item = line_list[0]
-                name = line_list[1]
-                self.add_item(item, name)
+            for item in items:
+                item_list = item.strip('\n').split(',')
+                string = item_list[0]
+                name = item_list[1]
+                self.add_item(string, name)
 
