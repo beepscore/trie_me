@@ -6,10 +6,6 @@ from trie_me import node
 
 class TestNode(unittest.TestCase):
 
-    def test_is_key_valid_empty_string(self):
-        # root node will have value empty string ""
-        self.assertTrue(node.Node.is_key_valid(""))
-
     def test_is_key_valid_string_0(self):
         self.assertTrue(node.Node.is_key_valid("0"))
 
@@ -18,6 +14,9 @@ class TestNode(unittest.TestCase):
 
     def test_is_key_valid_none(self):
         self.assertFalse(node.Node.is_key_valid(None))
+
+    def test_is_key_valid_empty_string(self):
+        self.assertFalse(node.Node.is_key_valid(""))
 
     def test_is_key_valid_number(self):
         self.assertFalse(node.Node.is_key_valid(5))
