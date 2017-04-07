@@ -13,12 +13,12 @@ class Node:
     """str: e.g. In a trie of social security numbers, leaf node name could be the person's name."""
 
     @classmethod
-    def is_value_valid(cls, value: str) -> bool:
-        digit_strings = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-        if value == "":
-            # root node will have value empty string ""
+    def is_key_valid(cls, key: str) -> bool:
+        digit_keys = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        if key == "":
+            # root node will have key empty string ""
             return True
-        elif value in digit_strings:
+        elif key in digit_keys:
             return True
         else:
             return False
@@ -61,7 +61,7 @@ class Node:
         if child is None:
             return
 
-        if Node.is_value_valid(child.value) and child.value != "":
+        if Node.is_key_valid(child.value) and child.value != "":
             index = int(child.value)
             self.children[index] = child
 
