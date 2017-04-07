@@ -21,7 +21,7 @@ class Node:
         else:
             return False
 
-    def __init__(self, value: str):
+    def __init__(self):
         """
         Initializes the class.
         Sets property visited to False.
@@ -32,12 +32,8 @@ class Node:
         https://www.toptal.com/java/the-trie-a-neglected-data-structure
         TODO: Consider if this is memory inefficient and if it is worth optimizing
 
-        :param value: a string representing a decimal digit from "0" - "9"
-        Note this constructor does not enforce that value is valid!
         :return: None
         """
-        self.value = value
-
         # http://stackoverflow.com/questions/10712002/create-an-empty-list-in-python-with-certain-size#10712044
         self.children = [None, None, None, None, None, None, None, None, None, None]
 
@@ -48,10 +44,12 @@ class Node:
         # typically None or 0 to (values_length - 1) inclusive
         self.index_largest_child_visited = None
 
-    def add_child(self, child):
+    def add_child(self, key: str, child):
         """
+        :param key: string to convert to children index
+        If key is None or is not valid, doesn't add child
         :param child: node to be added to children. 
-        If child is None or child.value is not valid, doesn't add child
+        If child is None, doesn't add child
         If self already has a child with this value, overwrites previous child
         :return: None
         """
@@ -59,8 +57,8 @@ class Node:
         if child is None:
             return
 
-        if Node.is_key_valid(child.value) and child.value != "":
-            index = int(child.value)
+        if key is not None and Node.is_key_valid(key):
+            index = int(key)
             self.children[index] = child
 
     def is_leaf_node(self) -> bool:

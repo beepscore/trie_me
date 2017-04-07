@@ -28,39 +28,35 @@ class TestNode(unittest.TestCase):
         self.assertFalse(node.Node.is_key_valid("5.3"))
 
     def test_instantiate(self):
-        my_node = node.Node("0")
+        my_node = node.Node()
         self.assertIsNotNone(my_node)
 
-    def test_children(self):
-        my_node = node.Node("2")
+    def test_children_none(self):
+        my_node = node.Node()
         expected = [None, None, None, None, None, None, None, None, None, None]
         self.assertEqual(my_node.children, expected)
 
-    def test_value(self):
-        my_node = node.Node("2")
-        self.assertEqual(my_node.value, "2")
-
     def test_visited(self):
-        my_node = node.Node("0")
+        my_node = node.Node()
         self.assertFalse(my_node.visited)
 
     def test_add_child(self):
-        root_node = node.Node(None)
+        root_node = node.Node()
         self.assertIsNotNone(root_node)
         expected = [None, None, None, None, None, None, None, None, None, None]
         self.assertEqual(root_node.children, expected)
 
-        child = node.Node("2")
-        root_node.add_child(child)
+        child = node.Node()
+        root_node.add_child("2", child)
         expected = [None, None, child, None, None, None, None, None, None, None]
         self.assertEqual(root_node.children, expected)
 
     def test_is_leaf_node(self):
-        root_node = node.Node(None)
+        root_node = node.Node()
         self.assertIsNotNone(root_node)
         self.assertTrue(root_node.is_leaf_node())
 
-        child = node.Node("2")
-        root_node.add_child(child)
+        child = node.Node()
+        root_node.add_child('2', child)
         self.assertFalse(root_node.is_leaf_node())
         self.assertTrue(child.is_leaf_node())

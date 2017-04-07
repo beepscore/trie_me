@@ -120,7 +120,8 @@ class Trie:
             index = int(character)
             if current_node.children[index] is None:
                 # nothing at this position yet, add a new node
-                current_node.children[index] = Node(character)
+                # TODO: Consider call current_node.add_child or delete method add_child
+                current_node.children[index] = Node()
 
             # traverse to next level down
             current_node = current_node.children[index]
