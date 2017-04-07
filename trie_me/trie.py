@@ -107,16 +107,16 @@ class Trie:
 
         return None
 
-    def add_item(self, item: str, name: str) -> Node:
+    def add_item(self, string: str, name: str) -> Node:
         """
-        :param item: item to add to trie. A string of decimal digits, typically length 9.
-        :param name: name associated with this item, stored in the leaf node.
-        :return: leaf node at position described by item. 
-        If trie contains item, this method overwrites it.
+        :param string: string to add to trie.
+        :param name: name associated with this string, stored in the last node.
+        :return: node at position described by string. 
+        If trie contains string, this method overwrites name.
         """
         current_node = self.root_node
 
-        for character in item:
+        for character in string:
             index = int(character)
             if current_node.children[index] is None:
                 # nothing at this position yet, add a new node
@@ -125,7 +125,7 @@ class Trie:
             # traverse to next level down
             current_node = current_node.children[index]
 
-        # loop got all the way to the last digit in number
+        # loop got all the way to the last character in string
         current_node.name = name
         return current_node
 
