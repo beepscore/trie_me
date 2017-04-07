@@ -118,18 +118,18 @@ def list_words(trie: dict) -> list:
     # (plus key end_char)
     keys_sorted = sorted(trie.keys())
 
-    # prefix is a single character
-    for prefix in keys_sorted:
-        if prefix != end_char:
+    # key is a single character
+    for key in keys_sorted:
+        if key != end_char:
 
             # set subtrie to next level down
-            subtrie = trie[prefix]
+            subtrie = trie[key]
 
             # recurse into subtrie
             suffixes = list_words(subtrie)
             
             for suffix in suffixes:
-                my_list.append(prefix + suffix)
+                my_list.append(key + suffix)
         else:
             my_list.append('')
     return my_list
