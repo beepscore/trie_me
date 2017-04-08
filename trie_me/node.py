@@ -27,7 +27,7 @@ class Node:
         Initializes the class.
         Sets property visited to False.
         
-        children is a list of child nodes fixed length 10
+        children is a list of child nodes fixed length of keys_length
         initially all children are None
         this simplifies implementation
         https://www.toptal.com/java/the-trie-a-neglected-data-structure
