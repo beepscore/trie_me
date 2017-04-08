@@ -26,14 +26,14 @@ class Trie:
     @classmethod
     def parent_string(cls, node_string):
         """
-        :param node_string: string representing a node
-        :return: node_string for parent of this node, node_string characters up to last character
+        :param node_string: string representing a node. Might not be in trie.
+        :return: string for parent of this node
         """
         if node_string == "":
-            return ""
+            return None
 
-        trimmed = node_string[0: len(node_string) - 1]
-        return trimmed
+        substring_up_to_last_character = node_string[0: len(node_string) - 1]
+        return substring_up_to_last_character
 
     def contains(self, string: str) -> bool:
         """
@@ -70,6 +70,9 @@ class Trie:
         :param node_string: A string representing a node. May or may not be in trie.
         :return: string for next larger sibling, else None
         """
+        # if node_string is None or node_string == "":
+        #     return Node.digit_keys[0]
+
         node_string_last_character = node_string[-1]
         node_string_last_character_index = int(node_string_last_character)
 
@@ -82,7 +85,7 @@ class Trie:
         for index in range(start_index, Node.keys_length):
 
             candidate = Trie.parent_string(node_string) + str(index)
-            if self.contains(candidate):
+            if self.get_node(candidate) is not None:
                 return candidate
 
         return None
@@ -123,4 +126,64 @@ class Trie:
                 string = item_list[0]
                 name = item_list[1]
                 self.add_item(string, name)
+
+    # TODO: FIXME
+    # Add stop condition before get to end of trie
+    def next_node_string(self, string: str) -> str:
+        """
+        :param string: string to start from. Trie may or may not have a corresponding node.
+        :return: next greater string that has a node in trie. Node might not have a name.
+        """
+
+        print(string)
+
+        if string is None:
+            # edge case. Use first key as a starting string
+            # To help maintain generality for trie that might contain other letters,
+            # use digit_keys[0] instead of literal "0"
+            return self.next_node_string(Node.digit_keys[0])
+
+        # depth first, attempt to go down one trie level
+        child0 = string + Node.digit_keys[0]
+        if self.get_node(child0) is not None:
+            # root has a child at children first key
+            return self.next_node_string(child0)
+
+        else:
+            # root doesn't have a child0
+            child0_next_sibling = self.next_larger_sibling_string(child0)
+
+            if child0_next_sibling is None:
+                # node has no children
+
+                # check current trie level- node's next siblings
+                next_sibling = self.next_larger_sibling_string(string)
+
+                if next_sibling is None:
+                    # node has no larger siblings
+
+                    # check parent trie level- parent's next sibling
+                    parent = self.parent_string(string)
+                    if parent is None:
+                        # attempting to go higher than root level
+                        return None
+
+                    else:
+                        parent_next_sibling = self.next_larger_sibling_string(parent)
+
+                        if parent_next_sibling is None:
+                            #return None
+                            # FIXME: grandparent string could be None, need to handle great-grandparent...
+                            grandparent = self.parent_string(parent)
+                            return self.next_node_string(grandparent)
+                        else:
+                            return self.next_node_string(parent_next_sibling)
+
+                else:
+                    return self.next_node_string(next_sibling)
+
+            else:
+                return self.next_node_string(child0_next_sibling)
+
+        return None
 

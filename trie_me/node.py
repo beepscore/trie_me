@@ -9,14 +9,15 @@ class Node:
     For decimal digits this is 10.
     For lowercase ascii alphabet letters could be 26."""
 
+    # ignore root node
+    digit_keys = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+
     name = None
     """str: e.g. In a trie of social security numbers, leaf node name could be the person's name."""
 
     @classmethod
     def is_key_valid(cls, key: str) -> bool:
-        # ignore root node
-        digit_keys = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-        if key in digit_keys:
+        if key in cls.digit_keys:
             return True
         else:
             return False

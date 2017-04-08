@@ -114,4 +114,14 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(trie.Trie.parent_string(""), "")
+        self.assertEqual(trie.Trie.parent_string(""), None)
+
+    def test_next_node_string(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        #numbers_trie.next_node_string(None)
+
+        #numbers_trie.next_node_string("0123456")
+
+        numbers_trie.next_node_string("256")
