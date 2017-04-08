@@ -5,7 +5,19 @@ Python implement trie data structure as practice.
 ## Trie Wikipedia
 https://en.wikipedia.org/wiki/Trie
 
+## trie2.py
+This module creates a trie of nested dictionaries.
 http://stackoverflow.com/questions/11015320/how-to-create-a-trie-in-python#11016430
+http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
+
+## Data Structures: Tries
+java
+https://youtu.be/zIjfhVPRZCg
+
+## Data Structures: Solve 'Contacts' Using Tries
+Java, shows recursive method with string argument
+Was helpful for figuring out how to find next node
+https://youtu.be/vlYZb68kAY0
 
 ## Python html5lib/trie
 https://github.com/html5lib/html5lib-python
@@ -23,23 +35,30 @@ https://github.com/raywenderlich/swift-algorithm-club/tree/master/Radix%20Tree
 
 # Results
 
-#### Traverse tree
+## trie.py
+Creates a trie of Node objects.
+
+### Traverse tree
+next_node_string (a successor method) works.  
 see Trie.py next_node_string and tests.
 
+## trie2.py
+This module creates a trie of nested dictionaries.  
+list_words works, but successor isn't working yet.
+
 ## TODO:
+Probably will use trie.py instead of trie2.py
 
-### Read from trie
-Write a method to return list of numbers between a and b.
-This may require depth first search.
-
+Could add a method to call next_node_string repeatedly to get all nodes in order.
+Could add a method to call next_node_string repeatedly to get all nodes between two strings.
 
 ### Implement delete a number
 Delete last node and any parents without children.
 
 ---
 
-# data/input/numbers_test.txt
-Contains an unsorted list of 9 digit numbers.
+# data/input/numbers_names_test.txt
+Contains an unsorted list of 9 digit numbers and names.
 For example these could represent social security numbers.
 Numbers don't contain separators like "-" or ".".
 
