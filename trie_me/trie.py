@@ -138,13 +138,11 @@ class Trie:
         if node is None:
             return None
 
-        # e.g. if len(string) is 0, index should be 0
-        original_character_at_child_level = original[len(string)]
-        original_index = int(original_character_at_child_level)
-        # don't check any children less than original_index
-        for index in range(original_index + 1, Node.keys_length):
+        for index in range(0, Node.keys_length):
             child_string = string + Node.keys[index]
-            if self.get_node(child_string) is not None:
+            # string may be on a different path than original
+            # so compare child_string to original, not just last characters
+            if child_string > original and self.get_node(child_string) is not None:
                 return child_string
 
         return None
