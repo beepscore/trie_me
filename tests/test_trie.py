@@ -120,27 +120,27 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(numbers_trie.next_node_string(None), "012345678")
+        self.assertEqual(numbers_trie.next_node_string(None, None), "012345678")
 
     def test_next_node_string_empty(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(numbers_trie.next_node_string(""), "012345678")
+        self.assertEqual(numbers_trie.next_node_string("", ""), "012345678")
 
     def test_next_node_string_is_prefix(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument is a node in the trie, a prefix of an item in the trie
-        self.assertEqual(numbers_trie.next_node_string("0123456"), "012345678")
+        self.assertEqual(numbers_trie.next_node_string("0123456", "0123456"), "012345678")
 
     def test_next_node_string_not_in_trie(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument is not a node in the trie
-        self.assertEqual(numbers_trie.next_node_string("256"), "555555555")
+        self.assertEqual(numbers_trie.next_node_string("256", "256"), "555555555")
 
     # TODO: FIXME
     def test_next_node_string_trie_contains_string(self):
@@ -149,7 +149,7 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument is an item in the trie
         # currently method is returning "012345678"
-        self.assertEqual(numbers_trie.next_node_string("012345678"), "123456789")
+        self.assertEqual(numbers_trie.next_node_string("012345678", "012345678"), "123456789")
 
     # TODO: FIXME
     def test_next_node_string_has_earlier_sibling(self):
@@ -158,5 +158,5 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument has an earlier sibling in the trie
         # currently method is returning "555555555"
-        self.assertEqual(numbers_trie.next_node_string("555555557"), "588327988")
+        self.assertEqual(numbers_trie.next_node_string("555555557", "555555557"), "588327988")
 

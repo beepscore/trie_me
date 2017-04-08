@@ -126,21 +126,35 @@ class Trie:
                 name = item_list[1]
                 self.add_item(string, name)
 
+    def first_child_greater_than_original(self, original: str, string: str):
+        """
+        :param original: string to start from. Trie may or may not have a corresponding node.
+        used to remember original starting point when ascending and descending trie.
+        :param string: string currently searching for.
+        :return: first child string greater than original and having a node in trie.
+        Node might not have a name.
+        """
+        pass
+
+
     # TODO: FIXME
     # Add stop condition before get to end of trie
-    def next_node_string(self, string: str) -> str:
+    def next_node_string(self, original: str, string: str) -> str:
         """
-        :param string: string to start from. Trie may or may not have a corresponding node.
+        :param original: string to start from. Trie may or may not have a corresponding node.
+        used to remember original starting point when ascending and descending trie.
+        :param string: string currently searching for. Typically greater than start string.
         :return: next greater string that has a node in trie. Node might not have a name.
         """
 
-        print(string)
+        print(original, string)
 
         if string is None:
             # edge case. Use first key as a starting string
             # To help maintain generality for trie that might contain other letters,
             # use keys[0] instead of literal "0"
-            return self.next_node_string(Node.keys[0])
+            original = Node.keys[0]
+            return self.next_node_string(original, original)
 
         # TODO: add check that string isn't the first string we started searching for
         current_node = self.get_node(string)
@@ -148,10 +162,19 @@ class Trie:
             return string
 
         # depth first, attempt to go down one trie level
+
+
+        # TODO: loop through children until find one not None and > original
+        # if don't find one, check siblings
+        # could extract method like first_child_greater_than_original
+        # this could return child0 or another child or None
+        # would eliminate some if blocks, make this method easier to read
+
+
         child0 = string + Node.keys[0]
         if self.get_node(child0) is not None:
             # root has a child at children first key
-            return self.next_node_string(child0)
+            return self.next_node_string(original, child0)
 
         else:
             # root doesn't have a child0
@@ -177,15 +200,15 @@ class Trie:
 
                         if parent_next_sibling is None:
                             # keep backing up a level
-                            return self.next_node_string(parent)
+                            return self.next_node_string(original, parent)
                         else:
-                            return self.next_node_string(parent_next_sibling)
+                            return self.next_node_string(original, parent_next_sibling)
 
                 else:
-                    return self.next_node_string(next_sibling)
+                    return self.next_node_string(original, next_sibling)
 
             else:
-                return self.next_node_string(child0_next_sibling)
+                return self.next_node_string(original, child0_next_sibling)
 
         return None
 
