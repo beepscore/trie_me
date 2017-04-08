@@ -148,7 +148,6 @@ class Trie:
 
         return None
 
-    # TODO: FIXME
     def next_node_string(self, original: str, string: str):
         """
         :param original: string to start from. Trie may or may not have a corresponding node.
