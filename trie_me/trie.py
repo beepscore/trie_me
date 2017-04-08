@@ -154,6 +154,7 @@ class Trie:
         Stores original starting point while recursive calls ascend and descend trie.
         :param string: string currently searching for. Typically greater than start string.
         :return: next greater string that has a node in trie. Node might not have a name.
+        return None if not found.
         """
 
         print(original, string)
