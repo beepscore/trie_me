@@ -71,7 +71,7 @@ class Trie:
         :return: string for next larger sibling, else None
         """
         # if node_string is None or node_string == "":
-        #     return Node.digit_keys[0]
+        #     return Node.keys[0]
 
         node_string_last_character = node_string[-1]
         node_string_last_character_index = int(node_string_last_character)
@@ -139,8 +139,8 @@ class Trie:
         if string is None:
             # edge case. Use first key as a starting string
             # To help maintain generality for trie that might contain other letters,
-            # use digit_keys[0] instead of literal "0"
-            return self.next_node_string(Node.digit_keys[0])
+            # use keys[0] instead of literal "0"
+            return self.next_node_string(Node.keys[0])
 
         # TODO: add check that string isn't the first string we started searching for
         current_node = self.get_node(string)
@@ -148,7 +148,7 @@ class Trie:
             return string
 
         # depth first, attempt to go down one trie level
-        child0 = string + Node.digit_keys[0]
+        child0 = string + Node.keys[0]
         if self.get_node(child0) is not None:
             # root has a child at children first key
             return self.next_node_string(child0)
