@@ -141,6 +141,13 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertEqual(numbers_trie.next_node_string("", ""), "012345678")
 
+    def test_next_node_string_return_none(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        # the trie doesn't contain a next node string
+        self.assertEqual(numbers_trie.next_node_string("888259025", "888259025"), None)
+
     def test_next_node_string_is_prefix(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)

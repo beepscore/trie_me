@@ -70,8 +70,9 @@ class Trie:
         :param node_string: A string representing a node. May or may not be in trie.
         :return: string for next larger sibling, else None
         """
-        # if node_string is None or node_string == "":
-        #     return Node.keys[0]
+        if node_string is None or node_string == "":
+            # avoid string index out of range
+            return None
 
         node_string_last_character = node_string[-1]
         node_string_last_character_index = int(node_string_last_character)
