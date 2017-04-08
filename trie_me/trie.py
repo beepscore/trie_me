@@ -24,15 +24,15 @@ class Trie:
         self.root_node = root_node
 
     @classmethod
-    def parent_string(cls, node_string):
+    def parent_string(cls, string):
         """
-        :param node_string: string representing a node. Might not be in trie.
+        :param string: string representing a node. Might not be in trie.
         :return: string for parent of this node
         """
-        if node_string == "":
+        if string == "":
             return None
 
-        substring_up_to_last_character = node_string[0: len(node_string) - 1]
+        substring_up_to_last_character = string[0: len(string) - 1]
         return substring_up_to_last_character
 
     def contains(self, string: str) -> bool:
