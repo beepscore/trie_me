@@ -158,7 +158,8 @@ class Trie:
         return None if not found.
         """
 
-        print(original, string)
+        # diagnostic print
+        # print(original, string)
 
         if string is None:
             # edge case. Use first key as a starting string
