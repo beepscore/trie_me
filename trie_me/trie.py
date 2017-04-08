@@ -128,7 +128,7 @@ class Trie:
 
     def first_child_greater_than_original(self, original: str, string: str):
         """
-        :param original: string to start from. Trie may or may not have a corresponding node.
+        :param original: string to start from. Trie might not have a corresponding node.
         :param string: string currently searching for.
         :return: first child string greater than original and having a node in trie.
         Node might not have a name.
