@@ -232,7 +232,7 @@ class Trie:
     def items_in_range(self, greater_than: str, less_than_or_equal_to: str) -> list:
         """
         :param greater_than: returned items will be greater than this
-        :param less_than: returned items will be less than or equal to this
+        :param less_than_or_equal_to: returned items will be less than or equal to this
         :return: list of items in range in trie, sorted alphabetically by string
         each item is a tuple (string, name)
         return empty list if range contains no items
