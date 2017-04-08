@@ -179,3 +179,18 @@ class TestTrie(unittest.TestCase):
         # earlier sibling is 588327984
         self.assertEqual(numbers_trie.next_node_string("588327987", "588327987"), "588327988")
 
+    def test_items(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+
+        expected = [
+            ('012345678', ' "jill"'),
+            ('123456789', ' "joe"'),
+            ('555555555', ' "rianna"'),
+            ('588327984', ' "mary"'),
+            ('588327987', ' "fu"'),
+            ('588327988', ' "joe"')
+        ]
+
+        self.assertEqual(numbers_trie.items(), expected)

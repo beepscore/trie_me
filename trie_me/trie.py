@@ -208,4 +208,20 @@ class Trie:
             else:
                 return self.next_node_string(original, next_sibling)
 
+    def items(self) -> list:
+        """
+        :return: list of all items in trie, sorted alphabetically by string
+        each item is a tuple (string, name)
+        return empty list if trie contains no items
+        """
 
+        string = ""
+        item_list = []
+        while True:
+            string = self.next_node_string(string, string)
+            if string == None:
+                return item_list
+            else:
+                node = self.get_node(string)
+                item = (string, node.name)
+                item_list.append(item)
