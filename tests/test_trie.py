@@ -201,7 +201,6 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
 
         actual = numbers_trie.items_in_range("012345678", "588327988")
-
         expected = [
             ('123456789', 'joe smith'),
             ('555555555', 'rianna yup'),
@@ -209,5 +208,17 @@ class TestTrie(unittest.TestCase):
             ('588327987', 'fu bar'),
             ('588327988', 'joe blow')
         ]
+        self.assertEqual(actual, expected)
 
+    def test_items_in_range_prefix(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+
+        actual = numbers_trie.items_in_range("0", "2")
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup')
+        ]
         self.assertEqual(actual, expected)
