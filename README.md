@@ -38,19 +38,16 @@ https://github.com/raywenderlich/swift-algorithm-club/tree/master/Radix%20Tree
 ## trie.py
 Creates a trie of Node objects.
 
-### Traverse tree
-next_node_string (a successor method) works.  
-see Trie.py next_node_string and tests.
+### traversal methods
+#### next_node_string
+#### items
+#### items_in_range
 
 ## trie2.py
 This module creates a trie of nested dictionaries.  
 list_words works, but successor isn't working yet.
 
 ## TODO:
-Probably will use trie.py instead of trie2.py
-
-Could add a method to call next_node_string repeatedly to get all nodes between two strings.
-
 ### Implement delete a number
 Delete last node and any parents without children.
 
