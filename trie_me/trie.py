@@ -129,20 +129,32 @@ class Trie:
     def first_child_greater_than_original(self, original: str, string: str):
         """
         :param original: string to start from. Trie may or may not have a corresponding node.
-        used to remember original starting point when ascending and descending trie.
         :param string: string currently searching for.
         :return: first child string greater than original and having a node in trie.
         Node might not have a name.
         """
-        pass
+        node = self.get_node(string)
 
+        if node is None:
+            return None
+
+        # e.g. if len(string) is 0, index should be 0
+        original_character_at_child_level = original[len(string)]
+        original_index = int(original_character_at_child_level)
+        # don't check any children less than original_index
+        for index in range(original_index + 1, Node.keys_length):
+            child_string = string + Node.keys[index]
+            if self.get_node(child_string) is not None:
+                return child_string
+
+        return None
 
     # TODO: FIXME
     # Add stop condition before get to end of trie
     def next_node_string(self, original: str, string: str) -> str:
         """
         :param original: string to start from. Trie may or may not have a corresponding node.
-        used to remember original starting point when ascending and descending trie.
+        Stores original starting point while recursive calls ascend and descend trie.
         :param string: string currently searching for. Typically greater than start string.
         :return: next greater string that has a node in trie. Node might not have a name.
         """

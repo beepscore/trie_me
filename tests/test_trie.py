@@ -116,6 +116,19 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertEqual(trie.Trie.parent_string(""), None)
 
+    def test_first_child_greater_than_original(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        self.assertEqual(numbers_trie.first_child_greater_than_original("256", "25"), None)
+        self.assertEqual(numbers_trie.first_child_greater_than_original("1234", "12"), None)
+        self.assertEqual(numbers_trie.first_child_greater_than_original("58", "5"), None)
+        self.assertEqual(numbers_trie.first_child_greater_than_original("57", "5"), "58")
+        self.assertEqual(numbers_trie.first_child_greater_than_original("58832797", "5883279"), "58832798")
+        self.assertEqual(numbers_trie.first_child_greater_than_original("588327982", "58832798"), "588327984")
+        self.assertEqual(numbers_trie.first_child_greater_than_original("588327984", "58832798"), "588327987")
+        self.assertEqual(numbers_trie.first_child_greater_than_original("588327987", "58832798"), "588327988")
+
     def test_next_node_string_none(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
