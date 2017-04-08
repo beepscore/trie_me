@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+# This module creates a trie of nested dictionaries.
+# It uses code similar to
+# http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
+# list_words works, but successor isn't working yet
+
 # sentinel character, terminal key or value at end of a path
 end_char = '_'
 
@@ -153,6 +158,7 @@ def successor_key(trie: dict, key: str) -> str:
     return None
 
 
+# TODO: FIXME
 def successor(trie: dict, node_string: str, trie_level: int) -> str:
     """
     for trie of fixed length items such as 9 digit numbers,
