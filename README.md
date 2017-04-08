@@ -23,15 +23,15 @@ https://github.com/raywenderlich/swift-algorithm-club/tree/master/Radix%20Tree
 
 # Results
 
+#### Traverse tree
+see Trie.py next_node_string and tests.
+
 ## TODO:
 
 ### Read from trie
 Write a method to return list of numbers between a and b.
-This may require depth first search, each node has a property visited of type bool.
+This may require depth first search.
 
-#### Traverse tree
-e.g. Visit "leftmost" nodes (e.g. child["0"]) as deep as possible, back up and mark child visited.
-Then visit next child.
 
 ### Implement delete a number
 Delete last node and any parents without children.
@@ -63,7 +63,7 @@ cd to project directory. Run tests via python command or bash script.
 ### python command
 This command lists and tests all modules
 
-python3 -m unittest tests.test_trie tests.test_node
+    python3 -m unittest tests.test_node tests.test_trie tests.test_trie2
 
 
 # Appendix virtual environment and requirements
