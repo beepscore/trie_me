@@ -219,9 +219,33 @@ class Trie:
         item_list = []
         while True:
             string = self.next_node_string(string, string)
-            if string == None:
+            if string is None:
                 return item_list
             else:
                 node = self.get_node(string)
                 item = (string, node.name)
                 item_list.append(item)
+
+    def items_in_range(self, greater_than: str, less_than_or_equal_to: str) -> list:
+        """
+        :param greater_than: returned items will be greater than this
+        :param less_than: returned items will be less than or equal to this
+        :return: list of items in range in trie, sorted alphabetically by string
+        each item is a tuple (string, name)
+        return empty list if range contains no items
+        """
+
+        string = greater_than
+        item_list = []
+
+        # < sic. next_node_string will return <= string
+        while string < less_than_or_equal_to:
+            string = self.next_node_string(string, string)
+            if string is None:
+                return item_list
+            else:
+                node = self.get_node(string)
+                item = (string, node.name)
+                item_list.append(item)
+
+        return item_list

@@ -194,3 +194,21 @@ class TestTrie(unittest.TestCase):
         ]
 
         self.assertEqual(numbers_trie.items(), expected)
+
+    def test_items_in_range(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+
+        actual = numbers_trie.items_in_range("012345678", "588327988")
+        print(actual)
+
+        expected = [
+            ('123456789', ' "joe"'),
+            ('555555555', ' "rianna"'),
+            ('588327984', ' "mary"'),
+            ('588327987', ' "fu"'),
+            ('588327988', ' "joe"')
+        ]
+
+        self.assertEqual(actual, expected)
