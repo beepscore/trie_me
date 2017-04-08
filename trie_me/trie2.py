@@ -2,6 +2,7 @@
 
 # This module creates a trie of nested dictionaries.
 # It uses code similar to
+# http://stackoverflow.com/questions/11015320/how-to-create-a-trie-in-python#11016430
 # http://stackoverflow.com/questions/36977439/python-trie-how-to-traverse-it-to-build-list-of-all-words#36977856
 # list_words works, but successor isn't working yet
 
