@@ -65,27 +65,27 @@ class Trie:
         # loop got all the way to the last character in string
         return current_node
 
-    def next_larger_sibling_string(self, node_string: str):
+    def next_larger_sibling_string(self, string: str):
         """
-        :param node_string: A string representing a node. May or may not be in trie.
+        :param string: A string representing a node. May or may not be in trie.
         :return: string for next larger sibling, else None
         """
-        if node_string is None or node_string == "":
+        if string is None or string == "":
             # avoid string index out of range
             return None
 
-        node_string_last_character = node_string[-1]
-        node_string_last_character_index = int(node_string_last_character)
+        string_last_character = string[-1]
+        string_last_character_index = int(string_last_character)
 
-        if node_string_last_character_index == Node.keys_length - 1:
-            # node at node_string is the largest child
+        if string_last_character_index == Node.keys_length - 1:
+            # node at string is the largest child
             return None
 
-        start_index = node_string_last_character_index + 1
+        start_index = string_last_character_index + 1
 
         for index in range(start_index, Node.keys_length):
 
-            candidate = Trie.parent_string(node_string) + str(index)
+            candidate = Trie.parent_string(string) + str(index)
             if self.get_node(candidate) is not None:
                 return candidate
 
