@@ -39,7 +39,7 @@ https://github.com/raywenderlich/swift-algorithm-club/tree/master/Radix%20Tree
 Creates a trie of Node objects.
 
 ### traversal methods
-#### next_node_string
+#### next_item
 #### items
 #### items_in_range
 

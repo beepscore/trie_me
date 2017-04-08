@@ -149,13 +149,14 @@ class Trie:
 
         return None
 
-    def next_node_string(self, original: str, string: str):
+    def next_item(self, original: str, string: str):
         """
+        Typically initial call to this method supplies same value for original and string
+        Subsequent resursive calls change string.
         :param original: string to start from. Trie may or may not have a corresponding node.
         Stores original starting point while recursive calls ascend and descend trie.
         :param string: string currently searching for. Typically greater than start string.
-        :return: next greater string that has a node in trie. Node might not have a name.
-        return None if not found.
+        :return: next item contained in trie. return None if not found.
         """
 
         # diagnostic print
@@ -166,7 +167,7 @@ class Trie:
             # To help maintain generality for trie that might contain other letters,
             # use keys[0] instead of literal "0"
             original = Node.keys[0]
-            return self.next_node_string(original, original)
+            return self.next_item(original, original)
 
         if string > original:
             current_node = self.get_node(string)
@@ -181,7 +182,7 @@ class Trie:
                 # trie "contains" node, i.e. it's path is in trie and it has a name
                 return first_child_greater
             else:
-                return self.next_node_string(original, first_child_greater)
+                return self.next_item(original, first_child_greater)
 
         else:
             # node doesn't have a child_greater than original
@@ -203,12 +204,12 @@ class Trie:
 
                     if parent_next_sibling is None:
                         # keep backing up a level
-                        return self.next_node_string(original, parent)
+                        return self.next_item(original, parent)
                     else:
-                        return self.next_node_string(original, parent_next_sibling)
+                        return self.next_item(original, parent_next_sibling)
 
             else:
-                return self.next_node_string(original, next_sibling)
+                return self.next_item(original, next_sibling)
 
     def items(self) -> list:
         """
@@ -220,7 +221,7 @@ class Trie:
         string = ""
         item_list = []
         while True:
-            string = self.next_node_string(string, string)
+            string = self.next_item(string, string)
             if string is None:
                 return item_list
             else:
@@ -240,9 +241,9 @@ class Trie:
         string = greater_than
         item_list = []
 
-        # first comparison < (sic). next_node_string() will return <= string
+        # first comparison < (sic). next_item() will return <= string
         while string < less_than_or_equal_to:
-            string = self.next_node_string(string, string)
+            string = self.next_item(string, string)
             # use a second comparison to limit item list
             if string is None or string > less_than_or_equal_to:
                 return item_list

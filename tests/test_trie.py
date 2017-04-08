@@ -129,55 +129,55 @@ class TestTrie(unittest.TestCase):
         self.assertEqual(numbers_trie.first_child_greater_than_original("588327984", "58832798"), "588327987")
         self.assertEqual(numbers_trie.first_child_greater_than_original("588327987", "58832798"), "588327988")
 
-    def test_next_node_string_none(self):
+    def test_next_item_none(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(numbers_trie.next_node_string(None, None), "012345678")
+        self.assertEqual(numbers_trie.next_item(None, None), "012345678")
 
-    def test_next_node_string_empty(self):
+    def test_next_item_empty(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(numbers_trie.next_node_string("", ""), "012345678")
+        self.assertEqual(numbers_trie.next_item("", ""), "012345678")
 
-    def test_next_node_string_return_none(self):
+    def test_next_item_return_none(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the trie doesn't contain a next node string
-        self.assertEqual(numbers_trie.next_node_string("888259025", "888259025"), None)
+        self.assertEqual(numbers_trie.next_item("888259025", "888259025"), None)
 
-    def test_next_node_string_is_prefix(self):
+    def test_next_item_is_prefix(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument is a node in the trie, a prefix of an item in the trie
-        self.assertEqual(numbers_trie.next_node_string("0123456", "0123456"), "012345678")
+        self.assertEqual(numbers_trie.next_item("0123456", "0123456"), "012345678")
 
-    def test_next_node_string_not_in_trie(self):
+    def test_next_item_not_in_trie(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument is not a node in the trie
-        self.assertEqual(numbers_trie.next_node_string("256", "256"), "555555555")
+        self.assertEqual(numbers_trie.next_item("256", "256"), "555555555")
 
-    def test_next_node_string_trie_contains_string(self):
+    def test_next_item_trie_contains_string(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument is an item in the trie
-        self.assertEqual(numbers_trie.next_node_string("012345678", "012345678"), "123456789")
-        self.assertEqual(numbers_trie.next_node_string("588327984", "588327984"), "588327987")
+        self.assertEqual(numbers_trie.next_item("012345678", "012345678"), "123456789")
+        self.assertEqual(numbers_trie.next_item("588327984", "588327984"), "588327987")
 
-    def test_next_node_string_has_earlier_sibling(self):
+    def test_next_item_has_earlier_sibling(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument has an earlier sibling in the trie
-        self.assertEqual(numbers_trie.next_node_string("555555557", "555555557"), "588327984")
+        self.assertEqual(numbers_trie.next_item("555555557", "555555557"), "588327984")
         # earlier sibling is 588327984
-        self.assertEqual(numbers_trie.next_node_string("588327987", "588327987"), "588327988")
+        self.assertEqual(numbers_trie.next_item("588327987", "588327987"), "588327988")
 
     def test_items(self):
         root_node = node.Node()
