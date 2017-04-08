@@ -22,14 +22,14 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         child = node.Node()
-        root_node.add_child("6", child)
+        root_node.children[6] = child
         self.assertEqual(numbers_trie.get_node("6"), child)
 
     def test_get_node_not_in_trie(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         child = node.Node()
-        root_node.add_child("6", child)
+        root_node.children[6] = child
         self.assertEqual(numbers_trie.get_node("2"), None)
 
     def test_contains_empty_string(self):
@@ -41,7 +41,7 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         child = node.Node()
-        root_node.add_child("6", child)
+        root_node.children[6] = child
         # child is in trie, but it doesn't have a name
         self.assertIsNone(child.name)
         self.assertFalse(numbers_trie.contains("6"))
@@ -54,7 +54,7 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         child = node.Node()
-        root_node.add_child("6", child)
+        root_node.children[6] = child
         self.assertFalse(numbers_trie.contains("2"))
 
     def test_next_larger_sibling_string(self):

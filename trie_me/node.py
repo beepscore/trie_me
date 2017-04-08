@@ -45,24 +45,6 @@ class Node:
         # typically None or 0 to (keys_length - 1) inclusive
         self.index_largest_child_visited = None
 
-    # TODO: Consider delete method or call it in trie
-    def add_child(self, key: str, child):
-        """
-        :param key: string to convert to children index
-        If key is None or is not valid, doesn't add child
-        :param child: node to be added to children. 
-        If child is None, doesn't add child
-        If self already has a child with this value, overwrites previous child
-        :return: None
-        """
-
-        if child is None:
-            return
-
-        if key is not None and Node.is_key_valid(key):
-            index = int(key)
-            self.children[index] = child
-
     def is_leaf_node(self) -> bool:
         """
         :return: True if all children are None, False otherwise
