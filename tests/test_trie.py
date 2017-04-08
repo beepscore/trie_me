@@ -65,28 +65,6 @@ class TestTrie(unittest.TestCase):
         self.assertEqual(numbers_trie.next_larger_sibling_string("588327987"), "588327988")
         self.assertIsNone(numbers_trie.next_larger_sibling_string("588327988"))
 
-    def test_next_larger_child_string(self):
-        root_node = node.Node()
-        numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        self.assertEqual(numbers_trie.next_larger_child_string("58832798"), "588327984")
-        self.assertIsNone(numbers_trie.next_larger_child_string("588327988"))
-
-    def test_next_larger_child_string_doesnt_contain(self):
-        root_node = node.Node()
-        numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        # "" trie doesn't "contain" argument
-        self.assertEqual(numbers_trie.next_larger_child_string(""), "0")
-        self.assertEqual(numbers_trie.next_larger_child_string("0"), "01")
-
-    def test_next_larger_child_string_node_not_in_trie(self):
-        root_node = node.Node()
-        numbers_trie = trie.Trie(root_node)
-        numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        # "" trie doesn't "contain" argument
-        self.assertEqual(numbers_trie.next_larger_child_string("3"), None)
-
     def test_add_item_contains_true(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)

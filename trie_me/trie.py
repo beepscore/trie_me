@@ -87,28 +87,6 @@ class Trie:
 
         return None
 
-    def next_larger_child_string(self, string: str):
-        """
-        :param string: A string representing a parent node. May or may not be in trie.
-        :return: string for next larger child node. else None
-        return None if all larger children are None
-        """
-        node = self.get_node(string)
-
-        if node is None:
-            return None
-
-        if node.is_leaf_node():
-            # leaf node never has children
-            return None
-
-        for index in range(0, Node.keys_length):
-            if node.children[index] is not None:
-                candidate_child_string = string + str(index)
-                return candidate_child_string
-
-        return None
-
     def add_item(self, string: str, name: str) -> Node:
         """
         :param string: string to add to trie.
