@@ -239,10 +239,11 @@ class Trie:
         string = greater_than
         item_list = []
 
-        # < sic. next_node_string will return <= string
+        # first comparison < (sic). next_node_string() will return <= string
         while string < less_than_or_equal_to:
             string = self.next_node_string(string, string)
-            if string is None:
+            # use a second comparison to limit item list
+            if string is None or string > less_than_or_equal_to:
                 return item_list
             else:
                 node = self.get_node(string)
