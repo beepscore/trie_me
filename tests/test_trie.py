@@ -155,7 +155,6 @@ class TestTrie(unittest.TestCase):
         # the string argument is not a node in the trie
         self.assertEqual(numbers_trie.next_node_string("256", "256"), "555555555")
 
-    # TODO: FIXME
     def test_next_node_string_trie_contains_string(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)

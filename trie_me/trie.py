@@ -166,59 +166,46 @@ class Trie:
             original = Node.keys[0]
             return self.next_node_string(original, original)
 
-        # TODO: add check that string isn't the first string we started searching for
-        current_node = self.get_node(string)
-        if current_node is not None and current_node.name is not None:
-            return string
+        if string > original:
+            current_node = self.get_node(string)
+            if current_node is not None and self.contains(string):
+                # done!
+                return string
 
         # depth first, attempt to go down one trie level
-
-
-        # TODO: loop through children until find one not None and > original
-        # if don't find one, check siblings
-        # could extract method like first_child_greater_than_original
-        # this could return child0 or another child or None
-        # would eliminate some if blocks, make this method easier to read
-
-
-        child0 = string + Node.keys[0]
-        if self.get_node(child0) is not None:
-            # root has a child at children first key
-            return self.next_node_string(original, child0)
+        first_child_greater = self.first_child_greater_than_original(original, string)
+        if first_child_greater is not None:
+            if self.contains(first_child_greater):
+                # trie "contains" node, i.e. it's path is in trie and it has a name
+                return first_child_greater
+            else:
+                return self.next_node_string(original, first_child_greater)
 
         else:
-            # root doesn't have a child0
-            child0_next_sibling = self.next_larger_sibling_string(child0)
+            # node doesn't have a child_greater than original
 
-            if child0_next_sibling is None:
-                # node has no children
+            # check current trie level- node's next siblings
+            next_sibling = self.next_larger_sibling_string(string)
 
-                # check current trie level- node's next siblings
-                next_sibling = self.next_larger_sibling_string(string)
+            if next_sibling is None:
+                # node has no larger siblings
 
-                if next_sibling is None:
-                    # node has no larger siblings
-
-                    # check parent trie level- parent's next sibling
-                    parent = self.parent_string(string)
-                    if parent is None:
-                        # attempting to go higher than root level
-                        return None
-
-                    else:
-                        parent_next_sibling = self.next_larger_sibling_string(parent)
-
-                        if parent_next_sibling is None:
-                            # keep backing up a level
-                            return self.next_node_string(original, parent)
-                        else:
-                            return self.next_node_string(original, parent_next_sibling)
+                # check parent trie level- parent's next sibling
+                parent = self.parent_string(string)
+                if parent is None:
+                    # attempting to go higher than root level
+                    return None
 
                 else:
-                    return self.next_node_string(original, next_sibling)
+                    parent_next_sibling = self.next_larger_sibling_string(parent)
+
+                    if parent_next_sibling is None:
+                        # keep backing up a level
+                        return self.next_node_string(original, parent)
+                    else:
+                        return self.next_node_string(original, parent_next_sibling)
 
             else:
-                return self.next_node_string(original, child0_next_sibling)
+                return self.next_node_string(original, next_sibling)
 
-        return None
 
