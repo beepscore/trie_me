@@ -37,9 +37,6 @@ class Node:
         # http://stackoverflow.com/questions/10712002/create-an-empty-list-in-python-with-certain-size#10712044
         self.children = [None, None, None, None, None, None, None, None, None, None]
 
-        # typically None or 0 to (keys_length - 1) inclusive
-        self.index_largest_child_visited = None
-
     def is_leaf_node(self) -> bool:
         """
         :return: True if all children are None, False otherwise
