@@ -163,12 +163,10 @@ class TestTrie(unittest.TestCase):
         # currently method is returning "012345678"
         self.assertEqual(numbers_trie.next_node_string("012345678", "012345678"), "123456789")
 
-    # TODO: FIXME
     def test_next_node_string_has_earlier_sibling(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         # the string argument has an earlier sibling in the trie
-        # currently method is returning "555555555"
-        self.assertEqual(numbers_trie.next_node_string("555555557", "555555557"), "588327988")
+        self.assertEqual(numbers_trie.next_node_string("555555557", "555555557"), "588327984")
 
