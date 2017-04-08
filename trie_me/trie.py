@@ -143,6 +143,11 @@ class Trie:
             # use digit_keys[0] instead of literal "0"
             return self.next_node_string(Node.digit_keys[0])
 
+        # TODO: add check that string isn't the first string we started searching for
+        current_node = self.get_node(string)
+        if current_node is not None and current_node.name is not None:
+            return string
+
         # depth first, attempt to go down one trie level
         child0 = string + Node.digit_keys[0]
         if self.get_node(child0) is not None:
@@ -172,10 +177,8 @@ class Trie:
                         parent_next_sibling = self.next_larger_sibling_string(parent)
 
                         if parent_next_sibling is None:
-                            #return None
-                            # FIXME: grandparent string could be None, need to handle great-grandparent...
-                            grandparent = self.parent_string(parent)
-                            return self.next_node_string(grandparent)
+                            # keep backing up a level
+                            return self.next_node_string(parent)
                         else:
                             return self.next_node_string(parent_next_sibling)
 

@@ -116,12 +116,36 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
         self.assertEqual(trie.Trie.parent_string(""), None)
 
-    def test_next_node_string(self):
+    def test_next_node_string_none(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
-        #numbers_trie.next_node_string(None)
+        self.assertEqual(numbers_trie.next_node_string(None), "012345678")
 
-        #numbers_trie.next_node_string("0123456")
+    def test_next_node_string_empty(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        self.assertEqual(numbers_trie.next_node_string(""), "012345678")
 
-        numbers_trie.next_node_string("256")
+    def test_next_node_string_is_prefix(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        # the string argument is a node in the trie, a prefix of an item in the trie
+        self.assertEqual(numbers_trie.next_node_string("0123456"), "012345678")
+
+    def test_next_node_string_not_in_trie(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        # the string argument is not a node in the trie
+        self.assertEqual(numbers_trie.next_node_string("256"), "555555555")
+
+    # TODO: FIXME
+    def test_next_node_string_trie_contains_string(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        # the string argument is an item in the trie
+        self.assertEqual(numbers_trie.next_node_string("012345678"), "555555555")
