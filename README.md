@@ -49,7 +49,6 @@ list_words works, but successor isn't working yet.
 ## TODO:
 Probably will use trie.py instead of trie2.py
 
-Could add a method to call next_node_string repeatedly to get all nodes in order.
 Could add a method to call next_node_string repeatedly to get all nodes between two strings.
 
 ### Implement delete a number
