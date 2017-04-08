@@ -23,9 +23,8 @@ class Node:
             return False
 
     def __init__(self):
-        """
+        self.none_ = """
         Initializes the class.
-        Sets property visited to False.
         
         children is a list of child nodes fixed length of keys_length
         initially all children are None
@@ -37,10 +36,6 @@ class Node:
         """
         # http://stackoverflow.com/questions/10712002/create-an-empty-list-in-python-with-certain-size#10712044
         self.children = [None, None, None, None, None, None, None, None, None, None]
-
-        # visited: Used when traversing the trie.
-        # True if this node and all of its children have been visited
-        self.visited = False
 
         # typically None or 0 to (keys_length - 1) inclusive
         self.index_largest_child_visited = None
