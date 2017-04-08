@@ -185,12 +185,12 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
 
         expected = [
-            ('012345678', ' "jill"'),
-            ('123456789', ' "joe"'),
-            ('555555555', ' "rianna"'),
-            ('588327984', ' "mary"'),
-            ('588327987', ' "fu"'),
-            ('588327988', ' "joe"')
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow')
         ]
 
         self.assertEqual(numbers_trie.items(), expected)
@@ -201,14 +201,13 @@ class TestTrie(unittest.TestCase):
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
 
         actual = numbers_trie.items_in_range("012345678", "588327988")
-        print(actual)
 
         expected = [
-            ('123456789', ' "joe"'),
-            ('555555555', ' "rianna"'),
-            ('588327984', ' "mary"'),
-            ('588327987', ' "fu"'),
-            ('588327988', ' "joe"')
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow')
         ]
 
         self.assertEqual(actual, expected)

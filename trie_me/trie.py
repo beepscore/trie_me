@@ -124,7 +124,8 @@ class Trie:
             for item in items:
                 item_list = item.strip('\n').split(',')
                 string = item_list[0]
-                name = item_list[1]
+                # strip leading and trailing whitespace
+                name = item_list[1].strip()
                 self.add_item(string, name)
 
     def first_child_greater_than_original(self, original: str, string: str):
