@@ -278,7 +278,7 @@ class TestTrie(unittest.TestCase):
         ]
         self.assertEqual(actual, expected)
 
-    def test_delete_item(self):
+    def test_delete_item_empty_string(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
@@ -296,8 +296,40 @@ class TestTrie(unittest.TestCase):
         ]
         self.assertEqual(actual, expected)
 
+        item = ''
         # call method under test
-        numbers_trie.delete_item('588327987', '588327987')
+        result = numbers_trie.delete_item(item, item)
+
+        self.assertEqual(result, item)
+
+        actual = numbers_trie.items()
+        # expect no change
+        self.assertEqual(len(actual), 7)
+        self.assertEqual(actual, expected)
+
+    def test_delete_item_with_siblings(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 7)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)
+
+        item = '588327987'
+        # call method under test
+        result = numbers_trie.delete_item(item, item)
+
+        self.assertEqual(result, '58832798')
 
         actual = numbers_trie.items()
         self.assertEqual(len(actual), 6)
@@ -309,5 +341,80 @@ class TestTrie(unittest.TestCase):
             ('588327984', 'mary quant'),
             ('588327988', 'joe blow'),
             ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)
+
+    def test_delete_item_no_siblings(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 7)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)
+
+        item = '555555555'
+        # call method under test
+        result = numbers_trie.delete_item(item, item)
+
+        self.assertEqual(result, '5')
+
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 6)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)
+
+
+    def test_delete_item2(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 7)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)
+
+        item = '625358960'
+        # call method under test
+        result = numbers_trie.delete_item(item, item)
+
+        self.assertEqual(result, '')
+
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 6)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow')
         ]
         self.assertEqual(actual, expected)

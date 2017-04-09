@@ -299,24 +299,21 @@ class Trie:
         If trie "contains" item at string, and node doesn't have children, delete the node
         If trie "contains" item at string, and node has children, just set node's name None
         
-        TODO: walk backwards up trie
-        Note if this node was an only child, the method should delete the parent
-        
         :param item_string: string for item to delete from trie.
         Stores original starting point while recursive calls ascend trie.
         :param string: string to delete from trie.
-        :return: string if item was deleted.
+        :return: string of parent of highest level node that was deleted
         return None if string is None.
-        return None if string is empty "". This represents root node, don't delete it.
+        return empty string "" if string is empty. This represents root node, don't delete it.
         return None if trie doesn't contain item
         """
 
         if string is None:
-            return None
+            return string
 
         if string == "":
             # string is trie root_node, don't delete it
-            return None
+            return string
 
         node = self.get_node(string)
         if node is None:
@@ -334,7 +331,7 @@ class Trie:
             parent.children[node_index] = None
 
             # recurse up trie
-            self.delete_item(item_string, node_prefix)
+            return self.delete_item(item_string, node_prefix)
 
         else:
             # node has children
