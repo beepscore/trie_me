@@ -277,3 +277,37 @@ class TestTrie(unittest.TestCase):
             ('625358960', 'joe smith')
         ]
         self.assertEqual(actual, expected)
+
+    def test_delete_item(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 7)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327987', 'fu bar'),
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)
+
+        # call method under test
+        numbers_trie.delete_item('588327987', '588327987')
+
+        actual = numbers_trie.items()
+        self.assertEqual(len(actual), 6)
+
+        expected = [
+            ('012345678', 'jill collins'),
+            ('123456789', 'joe smith'),
+            ('555555555', 'rianna yup'),
+            ('588327984', 'mary quant'),
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
+        ]
+        self.assertEqual(actual, expected)

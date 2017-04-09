@@ -292,3 +292,59 @@ class Trie:
                 if node.name == name:
                     item = (string, node.name)
                     item_list.append(item)
+
+    def delete_item(self, item_string: str, string: str):
+        """
+        # Delete all of string's nodes that aren't used for other items.
+        If trie "contains" item at string, and node doesn't have children, delete the node
+        If trie "contains" item at string, and node has children, just set node's name None
+        
+        TODO: walk backwards up trie
+        Note if this node was an only child, the method should delete the parent
+        
+        :param item_string: string for item to delete from trie.
+        Stores original starting point while recursive calls ascend trie.
+        :param string: string to delete from trie.
+        :return: string if item was deleted.
+        return None if string is None.
+        return None if string is empty "". This represents root node, don't delete it.
+        return None if trie doesn't contain item
+        """
+
+        if string is None:
+            return None
+
+        if string == "":
+            # string is trie root_node, don't delete it
+            return None
+
+        node = self.get_node(string)
+        if node is None:
+            # trie doesn't have a node at string, nothing to delete
+            return None
+
+        # trie has a node at string. Node might not have a name
+
+        if node.is_leaf_node():
+            # node has no children, delete node from parent
+            node_prefix = self.parent_string(string)
+            parent = self.get_node(node_prefix)
+            # int(string last character)
+            node_index = int(string[-1])
+            parent.children[node_index] = None
+
+            # recurse up trie
+            self.delete_item(item_string, node_prefix)
+
+        else:
+            # node has children
+            if string == item_string:
+                # set node.name None so trie no longer "contains" item_string
+                # don't orphan node's children by deleting node.
+                node.name = None
+                return string
+            else:
+                # string is not original item_string
+                # probably due to a recursive call to delete_item
+                return string
+
