@@ -48,9 +48,6 @@ Creates a trie of Node objects.
 This module creates a trie of nested dictionaries.  
 list_words works, but successor isn't working yet.
 
-## TODO:
-### Implement delete a number
-Delete last node and any parents without children.
 
 ---
 
