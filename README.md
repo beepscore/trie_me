@@ -42,6 +42,7 @@ Creates a trie of Node objects.
 #### next_item
 #### items
 #### items_in_range
+#### items_with_name
 
 ## trie2.py
 This module creates a trie of nested dictionaries.  
