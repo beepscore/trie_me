@@ -213,11 +213,20 @@ class Trie:
 
     def items(self) -> list:
         """
+        This method gets every item in the trie in order.
+        Time complexity to get one item in trie is O(c).
+        Time complexity to get all items in trie is n * O(c) = O(n).
+        
+        This is faster than getting all items in a binary search tree.
+        Time complexity to get one item in binary search trie is O(log(n)).
+        Time complexity to get all items binary search trie is n * O(log(n)) = O(n log(n))
+        
         :return: list of all items in trie, sorted alphabetically by string
         each item is a tuple (string, name)
         return empty list if trie contains no items
         """
 
+        # "" is guaranteed to be before first item
         string = ""
         item_list = []
         while True:
@@ -253,3 +262,33 @@ class Trie:
                 item_list.append(item)
 
         return item_list
+
+    def items_with_name(self, name: str) -> list:
+        """
+        This method must check every item in the trie.
+        Time complexity to get one item is O(c).
+        Time complexity to get all items is n * O(c) = O(n).
+        :param name: name to search for
+        :return: list of all items in trie with name
+        each item is a tuple (string, name)
+        retun empty list if name is None
+        return empty list if trie contains no items with name
+        """
+
+        if name is None:
+            return []
+
+        # "" is guaranteed to be before first item
+        string = ""
+        item_list = []
+        while True:
+            string = self.next_item(string, string)
+
+            if string is None:
+                # reached end of trie
+                return item_list
+            else:
+                node = self.get_node(string)
+                if node.name == name:
+                    item = (string, node.name)
+                    item_list.append(item)
