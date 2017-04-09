@@ -240,6 +240,17 @@ class TestTrie(unittest.TestCase):
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
 
+        actual = numbers_trie.items_with_name("mary quant")
+        expected = [
+            ('588327984', 'mary quant'),
+        ]
+        self.assertEqual(actual, expected)
+
+    def test_items_with_name_duplicate(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+
         actual = numbers_trie.items_with_name("joe smith")
         expected = [
             ('123456789', 'joe smith'),
