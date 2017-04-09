@@ -190,7 +190,8 @@ class TestTrie(unittest.TestCase):
             ('555555555', 'rianna yup'),
             ('588327984', 'mary quant'),
             ('588327987', 'fu bar'),
-            ('588327988', 'joe blow')
+            ('588327988', 'joe blow'),
+            ('625358960', 'joe smith')
         ]
 
         self.assertEqual(numbers_trie.items(), expected)
