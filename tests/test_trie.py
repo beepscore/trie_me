@@ -18,6 +18,12 @@ class TestTrie(unittest.TestCase):
         numbers_trie = trie.Trie(root_node)
         self.assertEqual(numbers_trie.root_node, root_node)
 
+    def test_get_node_empty_string(self):
+        root_node = node.Node()
+        numbers_trie = trie.Trie(root_node)
+        numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        self.assertEqual(numbers_trie.get_node(""), root_node)
+
     def test_get_node_in_trie(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
