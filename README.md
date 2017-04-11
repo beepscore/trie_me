@@ -76,6 +76,10 @@ cd to project directory. Run tests via python command or bash script.
 ### python command
 This command lists and tests all modules
 
+    python3 -m unittest discover -s tests/
+
+alternatively, can supply test module names as args
+
     python3 -m unittest tests.test_node tests.test_trie tests.test_trie2
 
 
