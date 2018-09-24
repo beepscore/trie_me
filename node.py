@@ -4,6 +4,8 @@
 class Node:
     """Node in trie."""
 
+    # keys is a class variable
+    # https://stackoverflow.com/questions/2714573/instance-variables-vs-class-variables-in-python#2714590
     # keys could be digits or or lowercase ascii alphabet letters
     # ignore root node
     keys = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
