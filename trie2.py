@@ -234,8 +234,3 @@ def successor(trie: dict, node_string: str, trie_level: int) -> str:
     # FIXME: By definition this is wrong!
     return node_string
 
-
-if __name__ == '__main__':
-    root_node = Node()
-    my_trie = make_trie_from_file("./data/input/numbers_test.txt")
-    print(list_words(my_trie))
