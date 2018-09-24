@@ -58,7 +58,8 @@ For example these could represent social security numbers.
 
 Numbers don't contain separators like "-" or ".".
 
-## how to run program
+## how to run unit tests
+Open terminal shell.
 
 ### cd <project root directory>
 e.g.
@@ -66,19 +67,7 @@ e.g.
 
 ### create and activate virtual environment (see appendix)
 
-### run file
-
-    python3 -m trie
-    
-or
-
-    python3 -m trie2
-
-
-## Unit tests
-To run tests, open terminal shell.
-cd to project directory. Run tests via python command or bash script.
-
+Run tests via python command or bash script.
 ### python command
 This command lists and tests all modules
 
