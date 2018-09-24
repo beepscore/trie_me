@@ -69,6 +69,10 @@ e.g.
 ### run file
 
     python3 -m trie
+    
+or
+
+    python3 -m trie2
 
 
 ## Unit tests

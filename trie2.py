@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from node import Node
+
 # This module creates a trie of nested dictionaries.
 # It uses code similar to
 # http://stackoverflow.com/questions/11015320/how-to-create-a-trie-in-python#11016430
@@ -232,3 +234,8 @@ def successor(trie: dict, node_string: str, trie_level: int) -> str:
     # FIXME: By definition this is wrong!
     return node_string
 
+
+if __name__ == '__main__':
+    root_node = Node()
+    my_trie = make_trie_from_file("./data/input/numbers_test.txt")
+    print(list_words(my_trie))
