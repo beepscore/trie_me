@@ -15,9 +15,11 @@ class Node:
     name = None
     """str: e.g. In a trie of social security numbers, leaf node name could be the person's name."""
 
-    @classmethod
-    def is_key_valid(cls, key: str) -> bool:
-        if key in cls.keys:
+    # @staticmethod is independent of instance state
+    # https://www.youtube.com/watch?v=HTLu2DFOdTg
+    @staticmethod
+    def is_key_valid(key: str) -> bool:
+        if key in Node.keys:
             return True
         else:
             return False
