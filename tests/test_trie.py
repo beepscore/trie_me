@@ -48,8 +48,8 @@ class TestTrie(unittest.TestCase):
         numbers_trie = trie.Trie(root_node)
         child = node.Node()
         root_node.children[6] = child
-        # child is in trie, but it doesn't have a name
         self.assertIsNone(child.name)
+        # child is in trie, but it doesn't have a name so expect contains returns False
         self.assertFalse(numbers_trie.contains("6"))
 
         child.name = "Ron"

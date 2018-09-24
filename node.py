@@ -33,6 +33,9 @@ class Node:
         """
         # http://stackoverflow.com/questions/10712002/create-an-empty-list-in-python-with-certain-size#10712044
         self.children = [None, None, None, None, None, None, None, None, None, None]
+
+        # always initialize name to None.
+        # trie building methods can set name for a leaf node.
         # In a trie of social security numbers, leaf node name could be the person's name.
         self.name = None
 
