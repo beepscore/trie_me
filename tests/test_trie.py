@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import unittest
-from trie_me import trie
-from trie_me import node
+import trie
+import node
 
 
 class TestTrie(unittest.TestCase):

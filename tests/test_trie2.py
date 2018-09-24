@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
-from trie_me import trie2
+import trie2
 
 
 class TestTrie2(unittest.TestCase):

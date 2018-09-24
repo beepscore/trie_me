@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from trie_me.node import Node
+from node import Node
 
 
 class Trie:
@@ -344,4 +344,11 @@ class Trie:
                 # string is not original item_string
                 # probably due to a recursive call to delete_item
                 return string
+
+
+if __name__ == '__main__':
+    root_node = Node()
+    numbers_trie = Trie(root_node)
+    numbers_trie.add_items("./data/input/numbers_names_test.txt")
+    print(numbers_trie.items())
 

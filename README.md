@@ -59,17 +59,16 @@ For example these could represent social security numbers.
 Numbers don't contain separators like "-" or ".".
 
 ## how to run program
+
 ### cd <project root directory>
 e.g.
     cd pythonProjects/trie_me
 
 ### create and activate virtual environment (see appendix)
 
-### call main
+### run file
 
-    python3 -m main
-or
-    python -m main
+    python3 -m trie
 
 
 ## Unit tests
