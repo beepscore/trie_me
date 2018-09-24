@@ -10,7 +10,6 @@ class Node:
     # ignore root node
     keys = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
 
-
     # @staticmethod is independent of instance state
     # https://www.youtube.com/watch?v=HTLu2DFOdTg
     @staticmethod
