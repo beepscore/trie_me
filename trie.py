@@ -77,13 +77,13 @@ class Trie:
         string_last_character = string[-1]
         string_last_character_index = int(string_last_character)
 
-        if string_last_character_index == Node.keys_length - 1:
+        if string_last_character_index == len(Node.keys) - 1:
             # node at string is the largest child
             return None
 
         start_index = string_last_character_index + 1
 
-        for index in range(start_index, Node.keys_length):
+        for index in range(start_index, len(Node.keys)):
 
             candidate = Trie.parent_string(string) + str(index)
             if self.get_node(candidate) is not None:
@@ -140,7 +140,7 @@ class Trie:
         if node is None:
             return None
 
-        for index in range(0, Node.keys_length):
+        for index in range(0, len(Node.keys)):
             child_string = string + Node.keys[index]
             # string may be on a different path than original
             # so compare child_string to original, not just last characters

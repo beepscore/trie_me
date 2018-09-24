@@ -4,11 +4,7 @@
 class Node:
     """Node in trie."""
 
-    keys_length = 10
-    """int: number of possible children keys.
-    For decimal digits this is 10.
-    For lowercase ascii alphabet letters could be 26."""
-
+    # keys could be digits or or lowercase ascii alphabet letters
     # ignore root node
     keys = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
 
@@ -28,7 +24,7 @@ class Node:
         self.none_ = """
         Initializes the class.
         
-        children is a list of child nodes fixed length of keys_length
+        children is a list of child nodes fixed length of len(keys)
         initially all children are None
         this simplifies implementation
         https://www.toptal.com/java/the-trie-a-neglected-data-structure
