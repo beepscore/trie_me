@@ -381,7 +381,6 @@ class TestTrie(unittest.TestCase):
         ]
         self.assertEqual(actual, expected)
 
-
     def test_delete_item2(self):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
