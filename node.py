@@ -23,7 +23,7 @@ class Node:
             return False
 
     def __init__(self):
-        self.none_ = """
+        """
         Initializes the class.
         
         children is a list of child nodes fixed length of len(keys)
