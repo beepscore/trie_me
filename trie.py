@@ -152,7 +152,7 @@ class Trie:
     def next_item(self, original: str, string: str):
         """
         Typically initial call to this method supplies same value for original and string
-        Subsequent resursive calls change string.
+        Subsequent recursive calls change string.
         :param original: string to start from. Trie may or may not have a corresponding node.
         Stores original starting point while recursive calls ascend and descend trie.
         :param string: string currently searching for. Typically greater than start string.
