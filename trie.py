@@ -32,7 +32,7 @@ class Trie:
         if string == "":
             return None
 
-        substring_up_to_last_character = string[0: len(string) - 1]
+        substring_up_to_last_character = string[:-1]
         return substring_up_to_last_character
 
     def contains(self, string: str) -> bool:
