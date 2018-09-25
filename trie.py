@@ -65,7 +65,7 @@ class Trie:
         # loop got all the way to the last character in string
         return current_node
 
-    def next_larger_sibling_string(self, string: str):
+    def next_larger_sibling_string(self, string: str=None):
         """
         :param string: A string representing a node. May or may not be in trie.
         :return: string for next larger sibling, else None
@@ -263,7 +263,7 @@ class Trie:
 
         return item_list
 
-    def items_with_name(self, name: str) -> list:
+    def items_with_name(self, name: str=None) -> list:
         """
         This method must check every item in the trie.
         Time complexity to get one item is O(c).

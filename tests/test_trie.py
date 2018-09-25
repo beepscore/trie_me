@@ -67,6 +67,9 @@ class TestTrie(unittest.TestCase):
         root_node = node.Node()
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
+        self.assertEqual(numbers_trie.next_larger_sibling_string(), None)
+        self.assertEqual(numbers_trie.next_larger_sibling_string(None), None)
+        self.assertEqual(numbers_trie.next_larger_sibling_string(""), None)
         self.assertEqual(numbers_trie.next_larger_sibling_string("588327984"), "588327987")
         self.assertEqual(numbers_trie.next_larger_sibling_string("588327987"), "588327988")
         self.assertIsNone(numbers_trie.next_larger_sibling_string("588327988"))
@@ -246,7 +249,8 @@ class TestTrie(unittest.TestCase):
         numbers_trie = trie.Trie(root_node)
         numbers_trie.add_items("./data/input/numbers_names_test.txt")
 
-        self.assertEqual(numbers_trie.items_with_name(None), [])
+        # use default name
+        self.assertEqual(numbers_trie.items_with_name(), [])
 
     def test_items_with_name_empty_string(self):
         root_node = node.Node()
