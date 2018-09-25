@@ -116,6 +116,7 @@ class TestTrie(unittest.TestCase):
         self.assertFalse(numbers_trie.contains("986422389"))
 
     def test_parent_string(self):
+        self.assertEqual(trie.Trie.parent_string("5"), "")
         self.assertEqual(trie.Trie.parent_string("123456789"), "12345678")
         self.assertEqual(trie.Trie.parent_string("803517"), "80351")
 
