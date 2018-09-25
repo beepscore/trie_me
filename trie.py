@@ -16,7 +16,7 @@ class Trie:
 
     def __init__(self, root_node):
         """
-        Initializes the class.
+        Initializes an instance
 
         :param root_node: root node of trie. value is empty string "".
         :return: None
