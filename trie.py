@@ -16,10 +16,8 @@ class Trie:
 
     def __init__(self, root_node):
         """
-        Initializes an instance
-
+        creates an instance
         :param root_node: root node of trie. value is empty string "".
-        :return: None
         """
         self.root_node = root_node
 
@@ -27,7 +25,7 @@ class Trie:
     def parent_string(string):
         """
         :param string: string representing a node. Might not be in trie.
-        :return: string for parent of this node
+        :return: string for parent of this node. e.g. if string is '539', return '53'
         """
         if string == "":
             return None
@@ -48,9 +46,9 @@ class Trie:
 
     def get_node(self, string: str):
         """
-        :param string: string to find. A string of zero or more decimal digits.
+        :param string: string to find. A string of zero or more characters from Node.keys.
         :return: node at position described by string. 
-        If node doesn't exist, return None
+        return None if node doesn't exist
         """
 
         # start at root node
