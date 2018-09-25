@@ -58,8 +58,7 @@ class Trie:
 
         # walk down trie
         for character in string:
-            # find index used by this key.
-            # This works for character digit or letter
+            # find index of this key. Don't assume character is a digit by calling int(character).
             index = Node.keys.index(character)
 
             if current_node.children[index] is None:
@@ -83,7 +82,7 @@ class Trie:
             return None
 
         string_last_character = string[-1]
-        # This works for string_last_character digit or letter
+        # find index of this key. Don't assume character is a digit by calling int(character).
         string_last_character_index = Node.keys.index(string_last_character)
 
         if string_last_character_index == len(Node.keys) - 1:
@@ -94,7 +93,7 @@ class Trie:
 
         for index in range(start_index, len(Node.keys)):
 
-            candidate = Trie.parent_string(string) + str(index)
+            candidate = Trie.parent_string(string) + Node.keys[index]
             if self.get_node(candidate) is not None:
                 return candidate
 
@@ -110,7 +109,8 @@ class Trie:
         current_node = self.root_node
 
         for character in string:
-            index = int(character)
+            # find index of this key. Don't assume character is a digit by calling int(character).
+            index = Node.keys.index(character)
             if current_node.children[index] is None:
                 # nothing at this position yet, add a new node
                 current_node.children[index] = Node()
@@ -335,8 +335,8 @@ class Trie:
             # node has no children, delete node from parent
             node_prefix = self.parent_string(string)
             parent = self.get_node(node_prefix)
-            # int(string last character)
-            node_index = int(string[-1])
+            # find index of string last character. Don't assume character is a digit by calling int(character).
+            node_index = Node.keys.index(string[-1])
             parent.children[node_index] = None
 
             # recurse up trie
