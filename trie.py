@@ -23,8 +23,8 @@ class Trie:
         """
         self.root_node = root_node
 
-    @classmethod
-    def parent_string(cls, string):
+    @staticmethod
+    def parent_string(string):
         """
         :param string: string representing a node. Might not be in trie.
         :return: string for parent of this node
