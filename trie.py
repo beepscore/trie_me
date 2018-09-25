@@ -58,13 +58,16 @@ class Trie:
 
         # walk down trie
         for character in string:
-            # assumes character is a digit
-            index = int(character)
+            # find index used by this key.
+            # This works for character digit or letter
+            index = Node.keys.index(character)
 
             if current_node.children[index] is None:
-                # trie current_node doesn't have a child node along this path
+                # trie current_node doesn't have a child node along this path,
+                # so no node exists at end of path
                 return None
             else:
+                # advance one level down to next node
                 current_node = current_node.children[index]
 
         # loop got all the way to the last character in string
