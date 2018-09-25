@@ -37,7 +37,11 @@ class TestNode(unittest.TestCase):
 
     def test_children_none(self):
         my_node = node.Node()
-        expected = [None, None, None, None, None, None, None, None, None, None]
+
+        # don't assume len(Node.keys) == 10
+        # expected = [None, None, None, None, None, None, None, None, None, None]
+        expected = [None] * len(node.Node.keys)
+
         self.assertEqual(my_node.children, expected)
 
     def test_is_leaf_node(self):

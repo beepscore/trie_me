@@ -30,8 +30,10 @@ class Node:
         TODO: Consider if this is memory inefficient and if it is worth optimizing
         :return: None
         """
-        # http://stackoverflow.com/questions/10712002/create-an-empty-list-in-python-with-certain-size#10712044
-        self.children = [None, None, None, None, None, None, None, None, None, None]
+        # don't assume len(Node.keys) == 10
+        # self.children = [None, None, None, None, None, None, None, None, None, None]
+        # _ for don't care
+        self.children = [None for _ in range(len(Node.keys))]
 
         # always initialize name to None.
         # trie building methods can set name for a leaf node.
