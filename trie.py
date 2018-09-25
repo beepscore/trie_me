@@ -83,7 +83,8 @@ class Trie:
             return None
 
         string_last_character = string[-1]
-        string_last_character_index = int(string_last_character)
+        # This works for string_last_character digit or letter
+        string_last_character_index = Node.keys.index(string_last_character)
 
         if string_last_character_index == len(Node.keys) - 1:
             # node at string is the largest child
