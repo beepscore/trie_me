@@ -52,12 +52,17 @@ class Trie:
         :return: node at position described by string. 
         If node doesn't exist, return None
         """
+
+        # start at root node
         current_node = self.root_node
 
+        # walk down trie
         for character in string:
+            # assumes character is a digit
             index = int(character)
+
             if current_node.children[index] is None:
-                # didn't find a match
+                # trie current_node doesn't have a child node along this path
                 return None
             else:
                 current_node = current_node.children[index]
