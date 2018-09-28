@@ -8,6 +8,16 @@ class TestTrie2(unittest.TestCase):
 
     def test_in_trie(self):
 
+        # alternative ways to call
+        # tuple is probably safer than a list as it is immutable
+        # words_tuple = ('hello', 'abc', 'baz', 'bar', 'barz')
+        # * expands the collection
+        # trie = trie2.make_trie(*words_tuple)
+
+        # words_list = ['hello', 'abc', 'baz', 'bar', 'barz']
+        # * expands the collection
+        # trie = trie2.make_trie(*words_list)
+
         trie = trie2.make_trie('hello', 'abc', 'baz', 'bar', 'barz')
 
         self.assertTrue(trie2.contains(trie, 'bar'))
