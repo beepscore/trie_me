@@ -14,7 +14,7 @@ end_char = '_'
 
 def make_trie(*words) -> dict:
     """
-    :param words: words to add to trie
+    :param words: words to add to trie, may be any length. See tests for example syntaxes
     :return: trie containing words
     """
     trie = {}
@@ -41,7 +41,7 @@ def make_trie_from_file(filename: str):
 def add_words(trie: dict, *words) -> dict:
     """
     :param trie: trie to add to
-    :param words: words to add to trie
+    :param words: words to add to trie, may be any length. See tests for example syntaxes
     :return: trie
     """
     for word in words:
